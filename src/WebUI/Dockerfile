@@ -1,5 +1,5 @@
 # Get base SDK Image from microsoft
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:5.0 AS build-env
 
 # install node js for react
 RUN curl --silent --location https://deb.nodesource.com/setup_10.x | bash -
@@ -14,7 +14,7 @@ COPY src/ ./
 RUN dotnet publish WebUI -c Release -o out
 
 # pull down the aspnet runtime and rebase the container
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+FROM mcr.microsoft.com/dotnet/core/aspnet:5.0
 
 # expose IP port of container
 EXPOSE 80
