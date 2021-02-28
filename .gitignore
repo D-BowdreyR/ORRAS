@@ -437,3 +437,4 @@ sts/MedicalPhysicsIdentity/tempkey.jwk
 **/appsettings.[Dd]evelopment.json
 **/appsettings.[Ss]taging.json
 **/appsettings.[Pp]roduction.json
+src/WebUI/orra.db
