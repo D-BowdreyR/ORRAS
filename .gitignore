@@ -432,3 +432,8 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 sts/MedicalPhysicsIdentity/tempkey.jwk
+
+# ignore appsettings configuration files
+**/appsettings.[Dd]evelopment.json
+**/appsettings.[Ss]taging.json
+**/appsettings.[Pp]roduction.json
