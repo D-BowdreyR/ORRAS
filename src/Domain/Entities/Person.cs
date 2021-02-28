@@ -1,8 +1,9 @@
 using System;
+using ORRA.Domain.Common;
 
 namespace ORRA.Domain.Entities
 {
-    public class Person
+    public class Person : AuditableEntity
     {
         public Guid Id { get; set; }
 

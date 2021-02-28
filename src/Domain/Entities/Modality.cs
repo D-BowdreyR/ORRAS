@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using ORRA.Domain.Common;
 
 namespace ORRA.Domain.Entities
 {
-    public class Modality
+    public class Modality : AuditableEntity
     {
         public Guid Id { get; set; }
 
