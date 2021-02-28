@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ORRA.Application.Common.Interfaces;
+using ORRA.Infrastructure.Services;
 
 namespace ORRA.Infrastructure.Persistence.Extensions
 {
@@ -25,6 +26,8 @@ namespace ORRA.Infrastructure.Persistence.Extensions
             }
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
+
+            services.AddTransient<IDateTime, DateTimeService>();
 
 
             return services;
