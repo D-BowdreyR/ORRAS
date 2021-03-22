@@ -26,6 +26,8 @@ namespace WebUI
             services.AddInfrastructureServices(Configuration);
 
             services.AddControllersWithViews();
+            
+            //TODO: add CORS service
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
@@ -59,6 +61,8 @@ namespace WebUI
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            //TODO: ADD CORS POLICY
 
             app.UseEndpoints(endpoints =>
             {
