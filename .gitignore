@@ -438,3 +438,6 @@ sts/MedicalPhysicsIdentity/tempkey.jwk
 **/appsettings.[Ss]taging.json
 **/appsettings.[Pp]roduction.json
 src/WebUI/orra.db
+src/WebUI/orra.db-shm
+.gitignore
+src/WebUI/orra.db-wal
