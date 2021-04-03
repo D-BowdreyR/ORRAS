@@ -1,6 +1,6 @@
 using System;
 
-namespace WebUI
+namespace ORRA.WebUI
 {
     public class WeatherForecast
     {

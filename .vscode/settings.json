@@ -1,6 +1,15 @@
 {
-    "files.exclude": {
-        "**/bin": true,
-        "**/obj": true
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true
+  },
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "orra_sqllite",
+      "database": "${workspaceFolder:ORRA_SPA}/src/WebUI/orra.db"
     }
+  ],
+  "dotnet-test-explorer.testProjectPath": "**/*Tests.csproj"
 }

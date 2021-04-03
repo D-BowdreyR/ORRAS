@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ORRA.Infrastructure.Persistence;
 
-namespace WebUI
+namespace ORRA.WebUI
 {
     public class Program
     {

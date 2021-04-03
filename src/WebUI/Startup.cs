@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ORRA.Infrastructure.Persistence.Extensions;
 
-namespace WebUI
+namespace ORRA.WebUI
 {
     public class Startup
     {
