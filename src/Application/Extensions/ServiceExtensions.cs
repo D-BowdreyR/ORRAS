@@ -1,3 +1,5 @@
+using System.Reflection;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ORRA.Application.Extensions
@@ -9,9 +11,10 @@ namespace ORRA.Application.Extensions
             // TODO: build services here
 
             // add MediaR
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             // add AutoMapper
-            
-            
+
+
             return services;
         }
     }
