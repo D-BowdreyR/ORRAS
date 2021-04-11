@@ -4,11 +4,11 @@ using ORRA.Domain.Entities;
 
 namespace ORRA.Infrastructure.Persistence.Configurations
 {
-    public class ModalityConfiguration : IEntityTypeConfiguration<Modality>
+    public class OrganisationConfiguration : IEntityTypeConfiguration<Organisation>
     {
-        public void Configure(EntityTypeBuilder<Modality> builder)
+        public void Configure(EntityTypeBuilder<Organisation> builder)
         {
-            builder.HasIndex(m => m.ModalityCode);
+            
         }
     }
 }

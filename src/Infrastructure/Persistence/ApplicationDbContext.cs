@@ -19,9 +19,11 @@ namespace ORRA.Infrastructure.Persistence
         }
 
         // All DbSets
-        public DbSet<Person> People { get; set; }
-        public DbSet<Modality> Modalities { get; set; }
+        public DbSet<ImagingModality> ImagingModalities { get; set; }
         public DbSet<ImagingProcedure> ImagingProcedures { get; set; }
+        public DbSet<Organisation> Organisations { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
         // Save method
 
@@ -55,7 +57,7 @@ namespace ORRA.Infrastructure.Persistence
             return result;
         }
 
-        // override OnModelCreation to add entity configuration using fluentAPI
+        // override OnModelCreation to add entity configurations using fluentAPI
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

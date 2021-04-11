@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ORRA.Infrastructure.Persistence;
 
 namespace ORRA.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210411132234_changes")]
+    partial class changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,6 +22,9 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("BaseSiteId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Created")
@@ -52,9 +57,16 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                     b.Property<string>("TelephoneNumber")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("TitleId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("BaseSiteId");
+
                     b.HasIndex("DepartmentId");
+
+                    b.HasIndex("TitleId");
 
                     b.ToTable("Contacts");
                 });
@@ -199,15 +211,76 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                     b.ToTable("Organisations");
                 });
 
+            modelBuilder.Entity("ORRA.Domain.Entities.PersonTitle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("AbriviatedTitle")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FullTitle")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PersonTitle");
+                });
+
+            modelBuilder.Entity("ORRA.Domain.Entities.Site", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("DepartmentId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsMainSite")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("SiteCode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SiteName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("Sites");
+                });
+
             modelBuilder.Entity("ORRA.Domain.Entities.Contact", b =>
                 {
+                    b.HasOne("ORRA.Domain.Entities.Site", "BaseSite")
+                        .WithMany("Contacts")
+                        .HasForeignKey("BaseSiteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ORRA.Domain.Entities.Department", "Department")
                         .WithMany("Contacts")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ORRA.Domain.Entities.PersonTitle", "Title")
+                        .WithMany()
+                        .HasForeignKey("TitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaseSite");
+
                     b.Navigation("Department");
+
+                    b.Navigation("Title");
                 });
 
             modelBuilder.Entity("ORRA.Domain.Entities.Department", b =>
@@ -232,9 +305,55 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                     b.Navigation("Modality");
                 });
 
+            modelBuilder.Entity("ORRA.Domain.Entities.Site", b =>
+                {
+                    b.HasOne("ORRA.Domain.Entities.Department", "Department")
+                        .WithMany("Sites")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("ORRA.Domain.ValueObjects.Address", "Address", b1 =>
+                        {
+                            b1.Property<Guid>("SiteId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("City")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Country")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("County")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Line1")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Line2")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("PostalCode")
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("SiteId");
+
+                            b1.ToTable("Sites");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SiteId");
+                        });
+
+                    b.Navigation("Address");
+
+                    b.Navigation("Department");
+                });
+
             modelBuilder.Entity("ORRA.Domain.Entities.Department", b =>
                 {
                     b.Navigation("Contacts");
+
+                    b.Navigation("Sites");
                 });
 
             modelBuilder.Entity("ORRA.Domain.Entities.ImagingModality", b =>
@@ -245,6 +364,11 @@ namespace ORRA.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("ORRA.Domain.Entities.Organisation", b =>
                 {
                     b.Navigation("Departments");
+                });
+
+            modelBuilder.Entity("ORRA.Domain.Entities.Site", b =>
+                {
+                    b.Navigation("Contacts");
                 });
 #pragma warning restore 612, 618
         }

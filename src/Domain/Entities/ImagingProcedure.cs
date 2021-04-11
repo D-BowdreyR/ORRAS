@@ -1,23 +1,24 @@
 using System;
 using ORRA.Domain.Common;
+using ORRA.Domain.Enums;
 
 namespace ORRA.Domain.Entities
 {
     public class ImagingProcedure : AuditableEntity
     {
-        public Guid Id { get; set; }
-
-        public string CrisCode { get; set; }
-
-        public string Term { get; set; }
-
-        public int ExamCount { get; set; }
-
-        public Modality Modality { get; set; }
-
+        public int Id { get; set; }
+        public string ShortCode { get; set; }
+        public string DisplayTerm { get; set; }
+        public ImagingProcedureStatus Status { get; set; } = ImagingProcedureStatus.Active;
+        public string RecommendedSubstituteProcedure { get; set; }
+        public ImagingModality Modality { get; set; }
         public Guid ModalityId { get; set; }
-
-        public bool Interventional { get; set; }        
-
+        public string SNOMEDCT_ConceptID { get; set; }
+        public string SNOMEDCT_LateralityID { get; set; }
+        public string SNOMEDCT_FSN { get; set; }
+        public int BodyPartMultiplicationFactor { get; set; }
+        public bool IsInterventional { get; set; }
+        public bool IsDiagnostic { get; set; }
+        public bool IsDeprecated { get; set; } = false;
     }
 }

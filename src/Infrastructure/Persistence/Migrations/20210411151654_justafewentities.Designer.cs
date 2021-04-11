@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ORRA.Infrastructure.Persistence;
 
 namespace ORRA.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210411151654_justafewentities")]
+    partial class justafewentities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,6 +53,9 @@ namespace ORRA.Infrastructure.Persistence.Migrations
 
                     b.Property<string>("TelephoneNumber")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("TitleId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -207,7 +212,28 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsOne("ORRA.Domain.Entities.PersonTitle", "Title", b1 =>
+                        {
+                            b1.Property<Guid>("ContactId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Title")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<int>("Value")
+                                .HasColumnType("INTEGER");
+
+                            b1.HasKey("ContactId");
+
+                            b1.ToTable("PersonTitles");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ContactId");
+                        });
+
                     b.Navigation("Department");
+
+                    b.Navigation("Title");
                 });
 
             modelBuilder.Entity("ORRA.Domain.Entities.Department", b =>
