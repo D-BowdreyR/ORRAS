@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using ORRA.Application.Extensions;
 using ORRA.Infrastructure.Persistence.Extensions;
 
 namespace ORRA.WebUI
@@ -24,6 +25,8 @@ namespace ORRA.WebUI
         {
             // inject infrastructure services into dependency injection
             services.AddInfrastructureServices(Configuration);
+            // inject application services into dependency injection
+            services.AddApplicationServices();
 
             services.AddControllersWithViews();
             

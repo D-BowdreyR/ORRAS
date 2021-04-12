@@ -4,7 +4,7 @@ using ORRA.Domain.Common;
 
 namespace ORRA.Domain.Entities
 {
-    public class Organisation : AuditableEntity
+    public class Company : AuditableEntity
     {
         public Guid Id { get; set; }
         public string DisplayName { get; set; }

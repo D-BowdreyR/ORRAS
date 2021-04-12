@@ -4,9 +4,9 @@ using ORRA.Domain.Entities;
 
 namespace ORRA.Infrastructure.Persistence.Configurations
 {
-    public class OrganisationConfiguration : IEntityTypeConfiguration<Organisation>
+    public class CompanyConfiguration : IEntityTypeConfiguration<Company>
     {
-        public void Configure(EntityTypeBuilder<Organisation> builder)
+        public void Configure(EntityTypeBuilder<Company> builder)
         {
             
         }

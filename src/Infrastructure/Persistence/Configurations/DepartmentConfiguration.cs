@@ -8,9 +8,9 @@ namespace ORRA.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Department> builder)
         {
-            builder.HasOne<Organisation>(o => o.Organisation)
+            builder.HasOne<Company>(o => o.Company)
                 .WithMany(d => d.Departments)
-                .HasForeignKey(o => o.OrganisationId);
+                .HasForeignKey(o => o.CompanyId);
             
         }
     }

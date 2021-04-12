@@ -17,7 +17,7 @@ namespace ORRA.Domain.Entities
         public ICollection<PrincipalInvestigator> PrincipalInvestigators { get; set; } = new List<PrincipalInvestigator>();
         public ICollection<ChiefInvestigator> ChiefInvestigators { get; set; } = new List<ChiefInvestigator>();
         public ICollection<Document> StudyDocuments { get; set; } = new List<Document>();
-        public Organisation StudySponsor { get; set; }
+        public Company StudySponsor { get; set; }
         public Guid StudySponsorId { get; set; }
 
     }

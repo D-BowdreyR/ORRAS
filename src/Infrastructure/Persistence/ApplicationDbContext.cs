@@ -21,7 +21,7 @@ namespace ORRA.Infrastructure.Persistence
         // All DbSets
         public DbSet<ImagingModality> ImagingModalities { get; set; }
         public DbSet<ImagingProcedure> ImagingProcedures { get; set; }
-        public DbSet<Organisation> Organisations { get; set; }
+        public DbSet<Company> Companies { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Contact> Contacts { get; set; }
 

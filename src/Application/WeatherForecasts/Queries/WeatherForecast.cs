@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 
-namespace ORRA.WebUI
+namespace ORRA.Application.WeatherForecasts.Queries
 {
     public class WeatherForecast
     {

@@ -90,11 +90,11 @@ namespace ORRA.Infrastructure.Persistence
                 context.ImagingModalities.AddRange(modalities);
             }
 
-            if(!context.Organisations.Any())
+            if(!context.Companies.Any())
             {
-                var organisations = new List<Organisation>
+                var companies = new List<Company>
                 {
-                    new Organisation
+                    new Company
                     {
                         Id = Guid.NewGuid(),
                         DisplayName = "Oxford University Hospitals NHS Foundation Trust",
@@ -122,7 +122,7 @@ namespace ORRA.Infrastructure.Persistence
 
                     }
                 };
-                context.Organisations.AddRange(organisations);
+                context.Companies.AddRange(companies);
             }
             
             await context.SaveChangesAsync();
