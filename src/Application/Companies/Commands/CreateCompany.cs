@@ -6,7 +6,7 @@ using ORRA.Domain.Entities;
 
 namespace ORRA.Application.Companies.Commands
 {
-    public class Create
+    public class CreateCompany
     {
         public class Command : IRequest<Unit>
         {

@@ -21,7 +21,7 @@ namespace ORRA.WebUI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Company>>> List(CancellationToken ct)
+        public async Task<ActionResult<CompaniesVm>> List(CancellationToken ct)
         {
             return await Mediator.Send(new ListCompanies.Query(), ct);
         }

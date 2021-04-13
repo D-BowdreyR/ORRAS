@@ -1,13 +1,10 @@
-using System.Runtime.Intrinsics.X86;
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
 using ORRA.Application.Companies.Queries;
 using ORRA.Domain.Entities;
 using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
+using ORRA.Application.Companies.Commands;
 
 namespace ORRA.Application.IntegrationTests.Companies.Queries
 {
@@ -35,12 +32,11 @@ namespace ORRA.Application.IntegrationTests.Companies.Queries
             var query = new ListCompanies.Query();
 
             // Act
-            List<Company> result = await SendAsync(query);
-
+            CompaniesVm result = await SendAsync(query);
             // Assert
             result.Should().NotBeNull();
-            result.Should().HaveCount(1);
-            result.First().Departments.Should().HaveCount(4);
+            result.Companies.Should().HaveCount(1);
+            result.Companies.First().Departments.Should().HaveCount(4);
         }
 
         // [Test]

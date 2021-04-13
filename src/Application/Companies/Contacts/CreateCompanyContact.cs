@@ -1,6 +1,6 @@
 namespace ORRA.Application.Companies.Contacts
 {
-    public class Create
+    public class CreateCompanyContact
     {
         
     }
