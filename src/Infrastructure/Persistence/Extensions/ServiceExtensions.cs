@@ -21,7 +21,7 @@ namespace ORRA.Infrastructure.Persistence.Extensions
             {
                 //TODO: Change MySql database provider
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlite(config.GetConnectionString("DefaultConnection"),
+                    options.UseNpgsql(config.GetConnectionString("PostgreSQL"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
 
