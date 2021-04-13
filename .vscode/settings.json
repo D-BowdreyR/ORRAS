@@ -9,6 +9,16 @@
       "driver": "SQLite",
       "name": "orra_sqllite",
       "database": "${workspaceFolder:ORRA_SPA}/src/WebUI/orra.db"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "database": "ORRA",
+      "name": "ORRA",
+      "username": "postgres"
     }
   ],
   "dotnet-test-explorer.testProjectPath": "**/*Tests.csproj"
