@@ -1,73 +1,106 @@
+using System;
+using System.Data;
+using System.Data.Common;
 using System.IO;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using Npgsql;
 using NUnit.Framework;
 using ORRA.Infrastructure.Persistence;
 using ORRA.WebUI;
 using Respawn;
 
-namespace ORRA.Application.IntegrationTests
+
+[SetUpFixture]
+// A Class to hold all the testing setup and tear down utility methods
+public class TestingUtility
 {
-    // A Class to hold all the testing setup and tear down utility methods
-    public class TestingUtility
+    private static IConfigurationRoot _configuration;
+    private static IServiceScopeFactory _scopeFactory;
+    private static Checkpoint _checkpoint;
+
+    [OneTimeSetUp]
+    public void RunBeforeAnyTests()
     {
-        private static IConfiguration _configuration;
-        private static IServiceScopeFactory _scopeFactory;
-        private static Checkpoint _checkpoint;
+        var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", true, true)
+            .AddEnvironmentVariables();
+        
+        _configuration = builder.Build();
 
-        [OneTimeSetUp]
-        public void RunBeforeAnyTests()
+        var startup = new Startup(_configuration);
+
+        var services = new ServiceCollection();
+
+        services.AddSingleton(Mock.Of<IWebHostEnvironment>(opt =>
+            opt.EnvironmentName == "Development" &&
+            opt.ApplicationName == "ORRA.WebUI"));
+
+        services.AddLogging();
+
+        services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseNpgsql(_configuration.GetConnectionString("PostgreSQL")));
+
+        startup.ConfigureServices(services);
+
+        _scopeFactory = services.BuildServiceProvider().GetService<IServiceScopeFactory>();
+
+        _checkpoint = new Checkpoint
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", true, true)
-                .AddEnvironmentVariables();
+            TablesToIgnore = new[] { "__EFMigrationsHistory" },
+            DbAdapter = DbAdapter.Postgres
+        };
 
-            _configuration = builder.Build();
+        EnsureDatabase();
+    }
 
-            var services = new ServiceCollection();
+    private static void EnsureDatabase()
+    {
+        using var scope = _scopeFactory.CreateScope();
 
-            var startup = new Startup(_configuration);
-            services.AddSingleton(Mock.Of<IWebHostEnvironment>(opt =>
-                opt.ApplicationName == "ORRA.WebUI" &&
-                opt.EnvironmentName == "Development"));
+        var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
 
-            startup.ConfigureServices(services);
+        context.Database.Migrate();
+    }
 
-            _scopeFactory = services.BuildServiceProvider().GetService<IServiceScopeFactory>();
+    public static async Task ResetState()
+    {
+        var connection = _configuration.GetConnectionString("PostgreSQL");
 
-            _checkpoint = new Checkpoint
-            {
-                TablesToIgnore = new[] { "__EFMigrationsHistory" }
-            };
-        }
-
-        public static async Task ResetState()
+        using (var conn = new NpgsqlConnection(connection))
         {
-            await _checkpoint.Reset(_configuration.GetConnectionString("DefaultConnection"));
+            await conn.OpenAsync();
+
+            await _checkpoint.Reset(conn);
         }
+    }
+    public static async Task AddAsync<TEntity>(TEntity entity) where TEntity : class
+    {
+        using var scope = _scopeFactory.CreateScope();
 
-        public static async Task AddAsync<TEntity>(TEntity entity) where TEntity : class
-        {
-            using var scope = _scopeFactory.CreateScope();
+        var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
 
-            var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
+        context.Add(entity);
+        await context.SaveChangesAsync();
+    }
 
-            context.Add(entity);
-            await context.SaveChangesAsync();
-        }
+    public static async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)
+    {
+        using var scope = _scopeFactory.CreateScope();
 
-        public static async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)
-        {
-            using var scope = _scopeFactory.CreateScope();
+        var mediator = scope.ServiceProvider.GetService<ISender>();
 
-            var mediator = scope.ServiceProvider.GetService<ISender>();
+        return await mediator.Send(request);
+    }
 
-            return await mediator.Send(request);
-        }
+    [OneTimeTearDown]
+    public void RunAfterAnyTests()
+    {
     }
 }

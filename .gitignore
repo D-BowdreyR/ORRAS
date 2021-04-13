@@ -441,3 +441,4 @@ src/WebUI/orra.db
 src/WebUI/orra.db-shm
 .gitignore
 src/WebUI/orra.db-wal
+tests/Application.IntegrationTests/appsettings.json
