@@ -4,7 +4,6 @@ using NUnit.Framework;
 using ORRA.Application.Companies.Queries;
 using ORRA.Domain.Entities;
 using System.Linq;
-using ORRA.Application.Companies.Commands;
 
 namespace ORRA.Application.IntegrationTests.Companies.Queries
 {

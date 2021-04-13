@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ORRA.Application.Common.Interfaces;
@@ -18,44 +21,22 @@ namespace ORRA.Application.Companies.Queries
         public class Handler : IRequestHandler<Query, CompaniesVm>
         {
             private readonly IApplicationDbContext _context;
-            public Handler(IApplicationDbContext context)
+            private readonly IMapper _mapper;
+            public Handler(IApplicationDbContext context, IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
             }
 
             public async Task<CompaniesVm> Handle(Query request, CancellationToken cancellationToken)
             {
-                var companies = await _context.Companies
-                    .Include(d => d.Departments)
-                    .ToListAsync(cancellationToken);
-
-                IList<CompanyDto> companiesdtos = new List<CompanyDto>();
-
-                foreach (var company in companies)
-                {
-                    IList<DepartmentDto> departdots = new List<DepartmentDto>();
-
-                    foreach (var department in company.Departments)
-                    {
-                        departdots.Add(new DepartmentDto 
-                        {   Id = department.Id, 
-                            DepartmentName = department.DepartmentName,
-                            Acronym = department.Acronym
-                        });
-                    }
-                    
-                    companiesdtos.Add(new CompanyDto
-                    {   Id = company.Id, 
-                        DisplayName = company.DisplayName,
-                        Abbreviation = company.Abbreviation,
-                        Departments = departdots
-                    });
-                }
-
-
                 return new CompaniesVm
                 {
-                    Companies = companiesdtos
+                    Companies = await _context.Companies
+                            .AsNoTracking()
+                            .ProjectTo<CompanyDto>(_mapper.ConfigurationProvider)
+                            .OrderBy(c => c.DisplayName)
+                            .ToListAsync(cancellationToken)
                 };
 
             }

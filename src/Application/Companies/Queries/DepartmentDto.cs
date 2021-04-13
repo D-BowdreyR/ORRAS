@@ -7,8 +7,7 @@ namespace ORRA.Application.Companies.Queries
         public Guid Id { get; set; }
         public string DepartmentName { get; set; }
         public string Acronym { get; set; }
-
-        
+        public bool IsDefault { get; set; } = false;
 
     }
 }
