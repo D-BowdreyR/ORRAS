@@ -8,7 +8,7 @@ using System.Linq;
 namespace ORRA.Application.IntegrationTests.Companies.Queries
 {
     using static TestingUtility;
-    public class CompaniesTests : TestBase
+    public class GetCompaniesTests : TestBase
     {
 
         [Test]
@@ -37,25 +37,6 @@ namespace ORRA.Application.IntegrationTests.Companies.Queries
             result.Companies.Should().HaveCount(1);
             result.Companies.First().Departments.Should().HaveCount(4);
         }
-
-        // [Test]
-        // public async Task ShouldRequireUniqueDisplayName()
-        // {
-        //     // arrange
-        //     await SendAsync(new CreateCompany.Command
-        //     {
-        //         DisplayName = "Oxford"
-        //     });
-
-        //     var command = new CreateCompany.Command { DisplayName = "Oxford" };
-
-        //     // act
-        //     // assert
-
-        //     FluentActions.Invoking(() => SendAsync(command))
-        //         .Should().Throw<ValidationException>();
-        // }
-
       
     }
 }

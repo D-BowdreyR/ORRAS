@@ -49,6 +49,11 @@ public class TestingUtility
 
         startup.ConfigureServices(services);
 
+        // TODO replace service registration for the interface of a currentuser service
+        // remove existing registration
+
+        // Register a MOCK of the userservice
+
         _scopeFactory = services.BuildServiceProvider().GetService<IServiceScopeFactory>();
 
         _checkpoint = new Checkpoint
@@ -80,6 +85,22 @@ public class TestingUtility
             await _checkpoint.Reset(conn);
         }
     }
+
+    // TODO: Implement a RunAsUserAsync method that will set the current user to a Test user account
+
+    // TODO: Implemnet a helper method for this to Create the user in the database
+
+    // TODO: Implement wrapper methods for an Admin User and a normal user
+
+    public static async Task<TEntity> FindAsync<TEntity>(params object[] keyValues) where TEntity : class
+    {
+        using var scope = _scopeFactory.CreateScope();
+
+        var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
+
+        return await context.FindAsync<TEntity>(keyValues);
+    }
+
     public static async Task AddAsync<TEntity>(TEntity entity) where TEntity : class
     {
         using var scope = _scopeFactory.CreateScope();

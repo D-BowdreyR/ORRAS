@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ORRA.Application.Extensions;
 using ORRA.Infrastructure.Persistence.Extensions;
+using ORRA.WebUI.Filters;
 
 namespace ORRA.WebUI
 {
@@ -28,8 +30,11 @@ namespace ORRA.WebUI
             // inject application services into dependency injection
             services.AddApplicationServices();
 
-            services.AddControllersWithViews();
-            
+            // configure exception handling
+            services.AddControllersWithViews(options =>
+                options.Filters.Add<ApiExceptionFilterAttribute>())
+                .AddFluentValidation();
+
             //TODO: add CORS service
             services.AddSwaggerGen(c =>
             {

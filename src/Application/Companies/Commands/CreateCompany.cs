@@ -24,7 +24,7 @@ namespace ORRA.Application.Companies.Commands
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 _context.Companies.Add(request.Company);
-                await _context.SaveChangesAsync(cancellationToken);
+                var result = await _context.SaveChangesAsync(cancellationToken) > 0;
                 return Unit.Value;
             }
         }
