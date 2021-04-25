@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace ORRA.Infrastructure.Persistence.Migrations
+namespace ORRAS.Infrastructure.Persistence.Migrations
 {
     public partial class initialPosgres : Migration
     {

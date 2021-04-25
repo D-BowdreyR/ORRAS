@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using ORRA.Infrastructure.Persistence;
+using ORRAS.Infrastructure.Persistence;
 
-namespace ORRA.Infrastructure.Persistence.Migrations
+namespace ORRAS.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                 .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-            modelBuilder.Entity("ORRA.Domain.Entities.Company", b =>
+            modelBuilder.Entity("ORRAS.Domain.Entities.Company", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,7 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("ORRA.Domain.Entities.Contact", b =>
+            modelBuilder.Entity("ORRAS.Domain.Entities.Contact", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,7 +88,7 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                     b.ToTable("Contacts");
                 });
 
-            modelBuilder.Entity("ORRA.Domain.Entities.Department", b =>
+            modelBuilder.Entity("ORRAS.Domain.Entities.Department", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -119,7 +119,7 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("ORRA.Domain.Entities.ImagingModality", b =>
+            modelBuilder.Entity("ORRAS.Domain.Entities.ImagingModality", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,7 +147,7 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                     b.ToTable("ImagingModalities");
                 });
 
-            modelBuilder.Entity("ORRA.Domain.Entities.ImagingProcedure", b =>
+            modelBuilder.Entity("ORRAS.Domain.Entities.ImagingProcedure", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -203,9 +203,9 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                     b.ToTable("ImagingProcedures");
                 });
 
-            modelBuilder.Entity("ORRA.Domain.Entities.Contact", b =>
+            modelBuilder.Entity("ORRAS.Domain.Entities.Contact", b =>
                 {
-                    b.HasOne("ORRA.Domain.Entities.Department", "Department")
+                    b.HasOne("ORRAS.Domain.Entities.Department", "Department")
                         .WithMany("Contacts")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -214,9 +214,9 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                     b.Navigation("Department");
                 });
 
-            modelBuilder.Entity("ORRA.Domain.Entities.Department", b =>
+            modelBuilder.Entity("ORRAS.Domain.Entities.Department", b =>
                 {
-                    b.HasOne("ORRA.Domain.Entities.Company", "Company")
+                    b.HasOne("ORRAS.Domain.Entities.Company", "Company")
                         .WithMany("Departments")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -225,9 +225,9 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("ORRA.Domain.Entities.ImagingProcedure", b =>
+            modelBuilder.Entity("ORRAS.Domain.Entities.ImagingProcedure", b =>
                 {
-                    b.HasOne("ORRA.Domain.Entities.ImagingModality", "Modality")
+                    b.HasOne("ORRAS.Domain.Entities.ImagingModality", "Modality")
                         .WithMany("ImagingProcedures")
                         .HasForeignKey("ModalityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -236,17 +236,17 @@ namespace ORRA.Infrastructure.Persistence.Migrations
                     b.Navigation("Modality");
                 });
 
-            modelBuilder.Entity("ORRA.Domain.Entities.Company", b =>
+            modelBuilder.Entity("ORRAS.Domain.Entities.Company", b =>
                 {
                     b.Navigation("Departments");
                 });
 
-            modelBuilder.Entity("ORRA.Domain.Entities.Department", b =>
+            modelBuilder.Entity("ORRAS.Domain.Entities.Department", b =>
                 {
                     b.Navigation("Contacts");
                 });
 
-            modelBuilder.Entity("ORRA.Domain.Entities.ImagingModality", b =>
+            modelBuilder.Entity("ORRAS.Domain.Entities.ImagingModality", b =>
                 {
                     b.Navigation("ImagingProcedures");
                 });

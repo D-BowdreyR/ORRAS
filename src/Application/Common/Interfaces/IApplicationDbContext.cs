@@ -2,9 +2,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using ORRA.Domain.Entities;
+using ORRAS.Domain.Entities;
 
-namespace ORRA.Application.Common.Interfaces
+namespace ORRAS.Application.Common.Interfaces
 {
     public interface IApplicationDbContext
     {

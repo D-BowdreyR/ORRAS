@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ORRA.Application.ImagingModalities;
-using ORRA.Domain.Entities;
+using ORRAS.Application.ImagingModalities;
+using ORRAS.Domain.Entities;
 
-namespace ORRA.WebUI.Controllers
+namespace ORRAS.WebUI.Controllers
 {
     public class ImagingModalitiesController : ApiControllerBase
     {

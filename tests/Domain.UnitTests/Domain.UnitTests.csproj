@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>ORRA.Domain.UnitTests</RootNamespace>
-    <AssemblyName>ORRA.Domain.UnitTests</AssemblyName>
+    <RootNamespace>ORRAS.Domain.UnitTests</RootNamespace>
+    <AssemblyName>ORRAS.Domain.UnitTests</AssemblyName>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 

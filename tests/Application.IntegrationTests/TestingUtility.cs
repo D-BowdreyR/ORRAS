@@ -11,8 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Npgsql;
 using NUnit.Framework;
-using ORRA.Infrastructure.Persistence;
-using ORRA.WebUI;
+using ORRAS.Infrastructure.Persistence;
+using ORRAS.WebUI;
 using Respawn;
 
 
@@ -40,7 +40,7 @@ public class TestingUtility
 
         services.AddSingleton(Mock.Of<IWebHostEnvironment>(opt =>
             opt.EnvironmentName == "Development" &&
-            opt.ApplicationName == "ORRA.WebUI"));
+            opt.ApplicationName == "ORRAS.WebUI"));
 
         services.AddLogging();
 

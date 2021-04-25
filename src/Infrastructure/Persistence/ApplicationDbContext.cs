@@ -3,11 +3,11 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using ORRA.Application.Common.Interfaces;
-using ORRA.Domain.Entities;
-using ORRA.Domain.Common;
+using ORRAS.Application.Common.Interfaces;
+using ORRAS.Domain.Entities;
+using ORRAS.Domain.Common;
 
-namespace ORRA.Infrastructure.Persistence
+namespace ORRAS.Infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext
     {

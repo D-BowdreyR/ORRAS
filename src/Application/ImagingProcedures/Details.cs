@@ -2,10 +2,10 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using ORRA.Application.Common.Interfaces;
-using ORRA.Domain.Entities;
+using ORRAS.Application.Common.Interfaces;
+using ORRAS.Domain.Entities;
 
-namespace ORRA.Application.ImagingProcedures
+namespace ORRAS.Application.ImagingProcedures
 {
     public class Details
     {

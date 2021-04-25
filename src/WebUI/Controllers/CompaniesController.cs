@@ -2,12 +2,12 @@ using System.Threading;
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ORRA.Application.Companies.Queries;
+using ORRAS.Application.Companies.Queries;
 using System.Collections.Generic;
-using ORRA.Domain.Entities;
-using ORRA.Infrastructure.Persistence;
+using ORRAS.Domain.Entities;
+using ORRAS.Infrastructure.Persistence;
 
-namespace ORRA.WebUI.Controllers
+namespace ORRAS.WebUI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

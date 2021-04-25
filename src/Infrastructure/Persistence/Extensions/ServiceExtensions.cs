@@ -2,10 +2,10 @@ using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ORRA.Application.Common.Interfaces;
-using ORRA.Infrastructure.Services;
+using ORRAS.Application.Common.Interfaces;
+using ORRAS.Infrastructure.Services;
 
-namespace ORRA.Infrastructure.Persistence.Extensions
+namespace ORRAS.Infrastructure.Persistence.Extensions
 {
     public static class ServiceExtensions
     {
@@ -15,7 +15,7 @@ namespace ORRA.Infrastructure.Persistence.Extensions
             if (config.GetValue<bool>("UseInMemoryDatabase"))
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseInMemoryDatabase("ORRA_Db"));
+                    options.UseInMemoryDatabase("ORRAS_Db"));
             }
             else 
             {

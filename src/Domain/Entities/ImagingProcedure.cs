@@ -1,8 +1,8 @@
 using System;
-using ORRA.Domain.Common;
-using ORRA.Domain.Enums;
+using ORRAS.Domain.Common;
+using ORRAS.Domain.Enums;
 
-namespace ORRA.Domain.Entities
+namespace ORRAS.Domain.Entities
 {
     public class ImagingProcedure : AuditableEntity
     {

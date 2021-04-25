@@ -3,12 +3,12 @@ using System;
 using System.Runtime.InteropServices;
 using System.Linq;
 using System.Threading.Tasks;
-using ORRA.Domain.Entities;
+using ORRAS.Domain.Entities;
 using System.Collections.Generic;
-using ORRA.Domain.Enums;
-using ORRA.Domain.ValueObjects;
+using ORRAS.Domain.Enums;
+using ORRAS.Domain.ValueObjects;
 
-namespace ORRA.Infrastructure.Persistence
+namespace ORRAS.Infrastructure.Persistence
 {
     public class Seed
     {

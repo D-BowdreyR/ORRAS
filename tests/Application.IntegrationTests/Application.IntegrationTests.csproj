@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>ORRA.Application.IntegrationTests</RootNamespace>
-    <AssemblyName>ORRA.Application.IntegrationTests</AssemblyName>
+    <RootNamespace>ORRAS.Application.IntegrationTests</RootNamespace>
+    <AssemblyName>ORRAS.Application.IntegrationTests</AssemblyName>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>

@@ -14,8 +14,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>ORRA.Application</RootNamespace>
-    <AssemblyName>ORRA.Application</AssemblyName>
+    <RootNamespace>ORRAS.Application</RootNamespace>
+    <AssemblyName>ORRAS.Application</AssemblyName>
   </PropertyGroup>
 
 </Project>

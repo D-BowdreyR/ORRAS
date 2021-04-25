@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 
 
-namespace ORRA.Application.IntegrationTests
+namespace ORRAS.Application.IntegrationTests
 {
     using static TestingUtility;
     public class TestBase

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using ORRA.Domain.Common;
+using ORRAS.Domain.Common;
 
-namespace ORRA.Domain.Entities
+namespace ORRAS.Domain.Entities
 {
     public class Company : AuditableEntity
     {

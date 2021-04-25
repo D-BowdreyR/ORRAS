@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentValidation.Results;
 
-namespace ORRA.Application.Common.Exceptions
+namespace ORRAS.Application.Common.Exceptions
 {
     public class ValidationException : Exception
     {

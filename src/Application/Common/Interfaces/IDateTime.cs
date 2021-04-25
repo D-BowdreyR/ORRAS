@@ -1,6 +1,6 @@
 using System;
 
-namespace ORRA.Application.Common.Interfaces
+namespace ORRAS.Application.Common.Interfaces
 {
     public interface IDateTime
     {

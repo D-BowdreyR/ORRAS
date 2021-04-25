@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ORRA.Application.Companies.Queries
+namespace ORRAS.Application.Companies.Queries
 {
     public class CompanyDto
     {

@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ORRA.WebUI.Controllers
+namespace ORRAS.WebUI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

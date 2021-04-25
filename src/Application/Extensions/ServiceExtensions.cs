@@ -3,10 +3,10 @@ using System.Reflection;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using ORRA.Application.Common.Behaviours;
-using ORRA.Application.Companies.Queries;
+using ORRAS.Application.Common.Behaviours;
+using ORRAS.Application.Companies.Queries;
 
-namespace ORRA.Application.Extensions
+namespace ORRAS.Application.Extensions
 {
     public static class ServiceExtensions
     {

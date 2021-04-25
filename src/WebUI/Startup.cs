@@ -7,11 +7,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using ORRA.Application.Extensions;
-using ORRA.Infrastructure.Persistence.Extensions;
-using ORRA.WebUI.Filters;
+using ORRAS.Application.Extensions;
+using ORRAS.Infrastructure.Persistence.Extensions;
+using ORRAS.WebUI.Filters;
 
-namespace ORRA.WebUI
+namespace ORRAS.WebUI
 {
     public class Startup
     {

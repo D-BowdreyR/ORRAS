@@ -1,4 +1,4 @@
-namespace ORRA.Domain.Enums
+namespace ORRAS.Domain.Enums
 {
     public enum ImagingProcedureStatus
     {

@@ -3,9 +3,9 @@ using System;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using ORRA.Application.Common.Exceptions;
+using ORRAS.Application.Common.Exceptions;
 
-namespace ORRA.WebUI.Filters
+namespace ORRAS.WebUI.Filters
 {
     public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     {

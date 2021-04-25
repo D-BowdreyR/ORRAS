@@ -3,10 +3,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using ORRA.Application.Common.Interfaces;
-using ORRA.Domain.Entities;
+using ORRAS.Application.Common.Interfaces;
+using ORRAS.Domain.Entities;
 
-namespace ORRA.Application.ImagingModalities
+namespace ORRAS.Application.ImagingModalities
 {
     public class List
     {

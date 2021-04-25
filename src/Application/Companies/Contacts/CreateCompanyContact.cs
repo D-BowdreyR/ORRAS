@@ -1,4 +1,4 @@
-namespace ORRA.Application.Companies.Contacts
+namespace ORRAS.Application.Companies.Contacts
 {
     public class CreateCompanyContact
     {

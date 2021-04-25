@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
-using ORRA.Application.Common.Exceptions;
-using ORRA.Application.Common.Interfaces;
-using ORRA.Domain.Entities;
+using ORRAS.Application.Common.Exceptions;
+using ORRAS.Application.Common.Interfaces;
+using ORRAS.Domain.Entities;
 
-namespace ORRA.Application.Companies.Queries
+namespace ORRAS.Application.Companies.Queries
 {
     public class Details
     {

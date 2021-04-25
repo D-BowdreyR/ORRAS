@@ -14,8 +14,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>ORRA.Infrastructure</RootNamespace>
-    <AssemblyName>ORRA.Infrastructure</AssemblyName>
+    <RootNamespace>ORRAS.Infrastructure</RootNamespace>
+    <AssemblyName>ORRAS.Infrastructure</AssemblyName>
   </PropertyGroup>
 
 </Project>

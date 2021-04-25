@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>ORRA.WebUI</RootNamespace>
-    <AssemblyName>ORRA.WebUI</AssemblyName>
+    <RootNamespace>ORRAS.WebUI</RootNamespace>
+    <AssemblyName>ORRAS.WebUI</AssemblyName>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>

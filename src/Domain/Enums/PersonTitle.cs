@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-namespace ORRA.Domain.Entities.Enums
+namespace ORRAS.Domain.Entities.Enums
 {
     public class PersonTitle
     {

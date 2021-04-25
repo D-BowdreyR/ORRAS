@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ORRA.Application.WeatherForecasts.Queries
+namespace ORRAS.Application.WeatherForecasts.Queries
 {
     public class WeatherForecast
     {

@@ -2,9 +2,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
-using ORRA.Application.Common.Interfaces;
+using ORRAS.Application.Common.Interfaces;
 
-namespace ORRA.Application.Companies.Commands
+namespace ORRAS.Application.Companies.Commands
 {
     public class CreateCompanyValidator : AbstractValidator<CreateCompany.Command>
     {

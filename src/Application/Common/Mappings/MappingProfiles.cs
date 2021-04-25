@@ -1,9 +1,9 @@
 using System.Linq;
 using AutoMapper;
-using ORRA.Application.Companies.Queries;
-using ORRA.Domain.Entities;
+using ORRAS.Application.Companies.Queries;
+using ORRAS.Domain.Entities;
 
-namespace ORRA.Application.Common.Mappings
+namespace ORRAS.Application.Common.Mappings
 {
     public class MappingProfiles : Profile
     {

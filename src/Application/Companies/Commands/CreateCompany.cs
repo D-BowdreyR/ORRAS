@@ -1,10 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using ORRA.Application.Common.Interfaces;
-using ORRA.Domain.Entities;
+using ORRAS.Application.Common.Interfaces;
+using ORRAS.Domain.Entities;
 
-namespace ORRA.Application.Companies.Commands
+namespace ORRAS.Application.Companies.Commands
 {
     public class CreateCompany
     {

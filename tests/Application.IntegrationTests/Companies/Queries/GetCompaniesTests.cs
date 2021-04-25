@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
-using ORRA.Application.Companies.Queries;
-using ORRA.Domain.Entities;
+using ORRAS.Application.Companies.Queries;
+using ORRAS.Domain.Entities;
 using System.Linq;
 
-namespace ORRA.Application.IntegrationTests.Companies.Queries
+namespace ORRAS.Application.IntegrationTests.Companies.Queries
 {
     using static TestingUtility;
     public class GetCompaniesTests : TestBase

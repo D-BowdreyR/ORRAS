@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ORRA.Application.WeatherForecasts.Queries;
+using ORRAS.Application.WeatherForecasts.Queries;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ORRA.WebUI.Controllers
+namespace ORRAS.WebUI.Controllers
 {
     public class WeatherForecastController : ApiControllerBase
     {

@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using FluentValidation;
 using NUnit.Framework;
-using ORRA.Application.Companies.Commands;
-using ORRA.Domain.Entities;
+using ORRAS.Application.Companies.Commands;
+using ORRAS.Domain.Entities;
 
-namespace ORRA.Application.IntegrationTests.Companies.Commands
+namespace ORRAS.Application.IntegrationTests.Companies.Commands
 {
     using static TestingUtility;
     public class CreateCompanyTests : TestBase
@@ -70,7 +70,7 @@ namespace ORRA.Application.IntegrationTests.Companies.Commands
 
             var companyid = await SendAsync(command);
 
-            var company = await FindAsync<Company>(companyid);
+            var company = await FindAsync<Company>(command.Company.Id);
 
             company.Should().NotBeNull();
             company.DisplayName.Should().Be(command.Company.DisplayName);

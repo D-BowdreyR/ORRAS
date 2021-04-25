@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ORRA.Domain.Entities;
-using ORRA.Application.ImagingProcedures;
+using ORRAS.Domain.Entities;
+using ORRAS.Application.ImagingProcedures;
 
-namespace ORRA.WebUI.Controllers
+namespace ORRAS.WebUI.Controllers
 {
     public class ImagingProceduresController : ApiControllerBase
     {

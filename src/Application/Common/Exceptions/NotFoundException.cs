@@ -1,6 +1,6 @@
 using System;
 
-namespace ORRA.Application.Common.Exceptions
+namespace ORRAS.Application.Common.Exceptions
 {
     public class NotFoundException : Exception
     {

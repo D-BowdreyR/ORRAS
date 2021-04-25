@@ -1,8 +1,8 @@
 using System.Diagnostics.Contracts;
 using System.Collections.Generic;
-using ORRA.Domain.Common;
+using ORRAS.Domain.Common;
 
-namespace ORRA.Domain.ValueObjects
+namespace ORRAS.Domain.ValueObjects
 {
     // Move info here https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/implement-value-objects
     public class Address : ValueObject<Address>

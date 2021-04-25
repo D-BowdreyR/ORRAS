@@ -1,5 +1,5 @@
 using System;
-namespace ORRA.Domain.Entities
+namespace ORRAS.Domain.Entities
 {
     public class ImagingProcedureModifierType
     {

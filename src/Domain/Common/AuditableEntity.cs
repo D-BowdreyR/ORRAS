@@ -1,6 +1,6 @@
 using System;
 
-namespace ORRA.Domain.Common
+namespace ORRAS.Domain.Common
 {
     public class AuditableEntity
     {
