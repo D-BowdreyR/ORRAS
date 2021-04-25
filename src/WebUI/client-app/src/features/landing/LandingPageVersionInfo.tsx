@@ -8,7 +8,7 @@ export default function LandingPageVersionInfo() {
       <Icon inverted name='industry' />
       <List.Content>
         <List.Header>Manufacturer</List.Header>
-        <List.Description as='a'>
+        <List.Description as='a' href='https://ouh.nhs.uk/medphys/' target='_blank'>
         Medical Physics and Clinical Engineering<br/>Business and Informatics Group
         </List.Description>
       </List.Content>
@@ -17,7 +17,7 @@ export default function LandingPageVersionInfo() {
       <Icon inverted name='github' />
       <List.Content>
         <List.Header>Manufacture Date</List.Header>
-          <List.Description as='a'>
+          <List.Description as='a' href='https://github.com/D-BowdreyR/ORRA_SPA' target='_blank'>
             See GitHub Repo
         </List.Description>
       </List.Content>

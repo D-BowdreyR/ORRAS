@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Container,
@@ -24,9 +25,9 @@ export default function LandingPage() {
       <Container>
         <Segment textAlign='center' vertical>
           <Container text>
-            <Header as='h1'>ORRA</Header>
-            <Header content='Welcome to Oxford Radiation Research Assurance' />
-            <Button positive>Sign in</Button>
+            <Header as='h1'>ORRAS</Header>
+            <Header content='Welcome to the Oxford Radiation Research Assurance Service' />
+            <Button as={Link} to='/dashboard'  positive>Sign in</Button>
             <Segment textAlign='center' vertical style={{ marginTop: 10 }}>
               <Message compact info>
                 New to us? <a href='#'>Register Here</a>
