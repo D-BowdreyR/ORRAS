@@ -1,8 +1,15 @@
 # Design Specification and Technical Design Decisions
+These pages detail the design of ORRAS in several difference perspectives
 
+## High Level Design
+  - System Architecture
+  - System Layers and Components
+
+## Low Level Design
+  - Use Cases
+  - Features / User Stories
 
 ## Design Patterns
-
 
 ### Command Query Responsibility Separation (CQRS)
 
@@ -13,10 +20,6 @@
 ### CQRS and Mediator together
 
 allows the inversion of dependency, the control flow
-
-
-
-
 
 #### Validation of Requests sent to APIs
 
@@ -34,4 +37,3 @@ by doing this we can control what http response status code is returned with our
 #### Logging of Requests
 
 logging is another common concern that is cross-cutting - we want to log when things happen and when errors / exceptions ocurr in the program. in the same way we can inject logging behavior into our request pipeline using the mediator pattern
-
