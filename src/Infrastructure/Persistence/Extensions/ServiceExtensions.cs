@@ -19,7 +19,6 @@ namespace ORRAS.Infrastructure.Persistence.Extensions
             }
             else 
             {
-                //TODO: Change MySql database provider
                 services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseNpgsql(config.GetConnectionString("PostgreSQL"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));

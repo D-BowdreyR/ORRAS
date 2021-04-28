@@ -26,7 +26,9 @@ namespace ORRAS.WebUI
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
 
-                    if (context.Database.IsSqlite())
+                    // if we are not using the in-memory database, then we must be using an SQL provider, 
+                    // so migrations are assumed to be supported
+                    if (!context.Database.IsInMemory())
                     {
                         await context.Database.MigrateAsync();
                     }
