@@ -38,7 +38,7 @@ namespace ORRAS.WebUI
             //TODO: add CORS service
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ORRA.WebUI", Version = "v1",  });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ORRAS.WebUI", Version = "v1",  });
             });
 
             // In production, the React files will be served from this directory
@@ -55,7 +55,7 @@ namespace ORRAS.WebUI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ORRA.WebUI v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ORRAS.WebUI v1"));
             }
             else
             {
