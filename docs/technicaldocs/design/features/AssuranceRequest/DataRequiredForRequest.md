@@ -1,6 +1,7 @@
 # Data required when a assurance request is made
 
 Meta Data Regarding Request
+
 - Creator (user id)
 - timedate of creation
 - timedate of submission
@@ -11,10 +12,13 @@ Meta Data Regarding Request
 ### Type of Approval being requested
 
 Currently these are called:
+
 1. **National Approval** (marked as RRA on the system), this is where we also create a radiation risk assessment. Could either be for a study where Oxford is the lead site, or an external request for MPE (e.g. HRA approved reviewers)
+
 2. **Local Approval** (makred as SSI on the system), this is where the RRA has already been completed and signed off by another MPE and CRE (so the IRAS should have already been submitted)
 
 This could be: (National Approval Only, National and Local Approval, Local Approval Only)
+smaller data set for National Approval Only
 
 ### Study [Header] Details
 
@@ -29,6 +33,8 @@ This could be: (National Approval Only, National and Local Approval, Local Appro
 - est. study end date (mm/yyyy)
 - est. total duration of the study (in months)
 - Full Title of research project
+- Type of Study
+- Phase/s
 - Chief investigator
 - Study Coordinator(s)
 - 
@@ -36,11 +42,12 @@ This could be: (National Approval Only, National and Local Approval, Local Appro
 - does the study involve Radiotherapies?
 - does the study involve radioactive substances?
 
-- multicentre? (YES/NO)
+- is multi-centre? (YES/NO)
 - if YES, how many UK Centres are involved?
 - Lead Site ()
 
 ### Local Site Participation Info
+
 - IF study is local - Main Local Site
 - Local Departments where imaging or therapy procedures will take place
 - Name of CRE or IRMER practitioner - business rules here:
@@ -51,6 +58,7 @@ This could be: (National Approval Only, National and Local Approval, Local Appro
 
 
 ### Study Participants Info
+
 - Will any of the study participants be patients>? (YES/NO)
 - Number (Whole Study)
 - Number at Local Site (oxford)
@@ -69,39 +77,52 @@ This could be: (National Approval Only, National and Local Approval, Local Appro
 - Will the study involve children?  (YES/NO)
 
 ### Study Protocol Procedures
-- Add Cohort(s)
-  - Create A Study Procedure/s
-    - Imaging Procedure (Code)
-    - Assign to one or more Cohorts (created earlier)
-    - Imaging Procedure Modifier
-    - Imaging Procedure Modifier Value
-    - Number of Routine Care examinations
-    - Number of Additional examinations
-    - Reporting Required (multi-selection)
-    - Data Processing Required? (multi-selection)
-    - Where will this procedure take place (OUH, )
+
+- Create a Study Cohort(s)
+  - Cohort Name
+  - Cohort contains Healthy volunteers?
+  - Comment / Description
+  - Which Phase of the study does this cohort belong to, if any
+
+
+- Create Study Procedure(s)
+  - Imaging Procedure (NICIP Code)
+  - Assign procedure to one or more Study Cohorts (created earlier)
+  - Imaging Procedure Modifier
+  - Imaging Procedure Modifier Value
+  - Number of Routine Care examinations
+  - Number of Additional examinations
+  - Reporting Required (multi-selection)
+  - Data Processing Required? (multi-selection)
+  - Where will this procedure take place (OUH, Manor, Not Local)
+
+Radiotherapy procedures generally have a Treatment with a pre-treatment (planning) scan and a during treatment scan. with the treatment we would want to know the number of fraction (i.e. the number of times they will be required to come in)
 
 ### Study Documentation
-- Upload Files
+
+- Upload File(s)
   - Title
   - Description
   - Version
   - Document Date
-  - Category/Type (Submitted IRAS Form,Draft IRAS Form, Protocol, Imaging Manual, Participant Information Sheet,Email Correspondents,Letter,HRA Approval)
+  - Category/Type (IRAS Form, Protocol, Imaging Manual, Participant Information Sheet,Email Correspondents,Letter,HRA Approval, Other)
 
-#### Currently we ask for:
-##### National Approval
-- Protocol
-- Draft IRAS (if available)
-- Draft Imaging Manual (if available)
-- Draft PIS
-- HRA documentation such as Research Exposure Form (REF form) (if via HRA route)
-- 
+Current documents we ask for:
 
-##### Local Approval
-- Protocol
-- Full IRAS Form
-- Imaging Manual (unless explicit confirmation that there is none)
-- ARSAC research approval certificate (if applicable, the sponsor should provide this to all participating sites)
-- PIS
-- Any Additional Information
+- National Approval
+  - Protocol
+  - Draft IRAS (if available)
+  - Draft Imaging Manual (if available)
+  - Draft PIS
+  - HRA documentation such as Research Exposure Form (REF form) (if via HRA route)
+
+- Local Approval
+  - Protocol
+  - Full IRAS Form
+  - Imaging Manual (unless explicit confirmation that there is none)
+  - ARSAC research approval certificate (if applicable, the sponsor should provide this to all participating sites)
+  - PIS
+  - Any Additional Information
+
+
+A study record could be associated with other studies records - so we could provide a link with the reason for association / statement of their relationship
