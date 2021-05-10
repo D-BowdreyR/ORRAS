@@ -50,3 +50,5 @@
 ## Acceptance Criteria
 
 ## GUI Mock
+
+Copyright © (2021) Oxford University Hospitals NHS Foundation Trust

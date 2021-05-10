@@ -2,7 +2,7 @@
 
 :blue_book:_MSc Clinical Science (Clinical Bioinformatics Physical Sciences) Research Project_
 
-:pencil2: **Project Author:** [_Daniel Bowdrey-Roberts_](www.linkedin.com/in/dan-bowdrey-roberts)
+:pencil2: **Project Author:** [_Daniel Bowdrey-Roberts_](](https://github.com/D-BowdreyR)
 
 :scroll: Copyright Notice: _This repository and its content is Copyright © 2021 Oxford University NHS Foundation Trust_
 

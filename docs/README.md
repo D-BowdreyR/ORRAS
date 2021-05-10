@@ -1,24 +1,36 @@
 # Oxford Research Radiation Assurance Service (ORRAS)
 
-_MSc Clinical Science (Clinical Bioinformatics Physical Sciences) Research Project_
+:blue_book:_MSc Clinical Science (Clinical Bioinformatics Physical Sciences) Research Project_
 
-Project Author: _Daniel Bowdrey-Roberts_
+:pencil2: **Project Author:** [_Daniel Bowdrey-Roberts_](](https://github.com/D-BowdreyR)
 
-This is a project to re-design and build a replacement for the current ORRA system used for the coordination and management of many clinical governance and technical assurance activities that must be undertaken across the Oxford University Hospital NHS Foundation Trust (OUH NHS FT) for the site approval of clinical research projects that involve ionising radiation research exposures.
+:scroll: Copyright Notice: _This repository and its content is Copyright © 2021 Oxford University NHS Foundation Trust_
 
-The current ORRA application was built on VB6 UI/Application with dependencies installed onto Windows only clients. It runs from a internally hosted file share and connects to an MS Access Database for for data persistence, that is hosted on the same file share.
+[GitHub Licensing Terms](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository#choosing-the-right-license)
 
-This re-designed system will utilise modern web frameworks and development processes to produce a scalable, supportable and extensible system.
+## About This Project
+
+A software development project to re-design and build a replacement system for the current Oxford Research Radiation Assurance (ORRA) software system used for the coordination and management of clinical governance and technical assurance activities undertaken at the Oxford University Hospital NHS Foundation Trust (OUH NHS FT) for the site approval of clinical research projects that involve ionising radiation research exposures.
+
+The current ORRA software application is built on a Visual Basic 6 and is only compatible with Microsoft Windows clients.
+It runs from a internally hosted network file share and connects to an MS Access Database for data persistence, which is also hosted on the same file share.
+
+This re-design will utilise modern backend and frontend web frameworks and employ software engineering processes to produce a scalable, supportable and extensible product.
+
+## Tools being used
 
 The solution will be built with:
 
-- SPA Backend: ASP.NET Core API
-- SPA Frontend: React.js
-- ORM: - Entity Framework Core
-- RDMS:
-  - PostgreSQL
-- Authen/Author: Custom Built Security Token Service (STS) using IdentityServer4 Framework
-  - Utilising OAuth and OpenID Connect Protocols
+- Single Page Application (SPA) Backend: ASP.NET Core API (.Net 5)
+- Single Page Application (SPA) Frontend: React.js
+- Object Relational Mapper (ORM): - Entity Framework Core
+- Relational Database Management System (RDMS): PostgreSQL
+
+- Authentication /Authorization: 
+  - utilising a OAuth 2.0 and OpenID Connect Web Security Protocols
+  - JWT Tokens
+  - with a view to using a custom Built Security Token Service (STS) using IdentityServer4 Framework
+
 - Docker for containerization of App, Databases, and STS
 
 Concepts/Design Patterns:
@@ -28,7 +40,8 @@ Concepts/Design Patterns:
 
 ## Git Workflow
 
-This is mostly a Solo project, but the structure of this repo will follow some best practices in terms of Git Flow. This repo is divided into three main parts/branches:
+This is mostly a Solo project, but the structure of this repository will follow some best practices in terms of Git Flow. 
+This repository is divided into three main parts/branches:
 
 1. Main and origin (remote)
 2. Develop

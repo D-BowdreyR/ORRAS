@@ -126,3 +126,5 @@ Current documents we ask for:
 
 
 A study record could be associated with other studies records - so we could provide a link with the reason for association / statement of their relationship
+
+Copyright © (2021) Oxford University Hospitals NHS Foundation Trust
