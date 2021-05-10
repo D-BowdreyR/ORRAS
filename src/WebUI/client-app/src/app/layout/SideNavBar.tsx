@@ -1,23 +1,50 @@
-import React from 'react';
-import { Container, Divider, Icon, Menu, Segment, Sidebar } from 'semantic-ui-react';
+import { Layout, Menu } from 'antd';
+import { NavLink, useHistory } from 'react-router-dom';
+import {
+  HomeOutlined,
+  LineChartOutlined,
+  PieChartOutlined,
+} from '@ant-design/icons';
+import React, { useEffect, useState } from 'react';
 
-export default function SideNavBar(){
-    return (
-            <Sidebar style={{overflow:'scroll' }} vertical icon='labeled' animation='slide along' as={Menu} inverted visible width='thin'>
-                <Divider section/>
-            <Menu.Item as='a'>
-                <Icon name='home'/>Home
-            </Menu.Item>
-            <Menu.Item as='a'>Assurance Requests
-            </Menu.Item>
-            <Menu.Item as='a'>Research Studies
-            </Menu.Item>
-            <Menu.Item as='a'>Clinical
-            </Menu.Item>
-            <Menu.Item as='a'>Home
-            </Menu.Item>
-            <Menu.Item as='a'>Home
-            </Menu.Item>
-        </Sidebar>
-    )
+const { Header, Sider } = Layout;
+
+export default function SideNavBar() {
+  const [collapse, setCollapse] = useState(false);
+
+  useEffect(() => {
+    window.innerWidth <= 760 ? setCollapse(true) : setCollapse(false);
+  }, []);
+
+  const handleToggle = () => {
+    collapse ? setCollapse(false) : setCollapse(true);
+  };
+
+  return (
+    <Sider collapsible collapsed={collapse} onCollapse={handleToggle}>
+      {/* <div className="logo" /> */}
+      <Menu theme='dark' defaultSelectedKeys={['/dashboard']} mode='inline'>
+        <Menu.Item key='/dashboard' icon={<PieChartOutlined />}>
+          <NavLink to='/dashboard'>
+            <span>Dashboard</span>
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key='/assurancerequests' icon={<PieChartOutlined />}>
+          <NavLink to='/dashboard'>
+            <span>Assurance Requests</span>
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key='/researchstudies' icon={<PieChartOutlined />}>
+          <NavLink to='/dashboard'>
+            <span>Research Studies</span>
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key='/clinical' icon={<PieChartOutlined />}>
+          <NavLink to='/dashboard'>
+            <span>Clinical</span>
+          </NavLink>
+        </Menu.Item>
+      </Menu>
+    </Sider>
+  );
 }

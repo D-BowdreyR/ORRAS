@@ -10,11 +10,37 @@ body {
   overflow: hidden;
 }
 
-/* landing page */
+.header {
+  display: inherit;
+}
+
+.logo {
+  height: 32px;
+  width: 35px;
+  margin: 16px;
+}
+
+.flex-setting {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+/* landing page style */
 
 .landing-footer{
-    position : fixed;
+    position: fixed;
     bottom : 0;
     width: 100%;
     overflow: hidden;
 }
+
+.landing-image {
+  background-image: url(./images/scanner.jpg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat:no-repeat;
+  background-color: white;
+}
+
+/* end landing page style */

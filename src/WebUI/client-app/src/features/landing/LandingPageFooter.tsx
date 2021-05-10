@@ -1,3 +1,4 @@
+import { Footer } from 'antd/lib/layout/layout';
 import React from 'react';
 import {
   Container,
@@ -10,34 +11,11 @@ import {
 import LandingPageVersionInfo from './LandingPageVersionInfo';
 export default function LandingPageBanner() {
   return (
-    <div className="landing-footer">
-      <Segment inverted>
-        <Container>
-          <Grid divided stackable>
-            <Grid.Row>
-              <Grid.Column width={4}>
-                <Header inverted as='h4' content='About' />
-                <List inverted link>
-                  <List.Item as='a'>Item 1</List.Item>
-                  <List.Item as='a'>Item 2</List.Item>
-                  <List.Item as='a'>Item 3</List.Item>
-                </List>
-              </Grid.Column>
-              <Grid.Column width={4}>
-                <Header inverted as='h4' content='Services' />
-                <List inverted link>
-                  <List.Item as='a'>Item 1</List.Item>
-                  <List.Item as='a'>Item 2</List.Item>
-                  <List.Item as='a'>Item 3</List.Item>
-                </List>
-              </Grid.Column>
-              <Grid.Column width={7}>
-                <LandingPageVersionInfo />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
-          </Segment>
-        </div>
+    <Footer style={{ textAlign: 'center' }}>
+      <LandingPageVersionInfo />
+      <div style={{marginTop:'2px', color: 'slategray'}}>
+      Copyright &copy; 2021 Oxford University Hospitals NHS Foundation Trust
+      </div>
+        </Footer>
   );
 }

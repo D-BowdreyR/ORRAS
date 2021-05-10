@@ -1,26 +1,21 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { Container, Header, Icon } from "semantic-ui-react";
-import Dashboard from "../../features/dashboard/Dashboard";
-import LandingPage from "../../features/landing/LandingPage";
-import SideNavBar from "./SideNavBar";
-import TopBar from "./TopBar";
+import { Layout } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Container, Header, Icon } from 'semantic-ui-react';
+import Dashboard from '../../features/dashboard/Dashboard';
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import LandingPage from '../../features/landing/LandingPage';
+import AppLayout from './AppLayout';
 
 function App() {
   return (
     <>
-      <Route exact path='/' component={LandingPage} />
+    <Route exact path='/' component={LandingPage} />
       <Route
         path={'/(.+)'}
         render={() => (
           <>
-            <TopBar />
-            <SideNavBar/>
-            <Container style={{marginTop: '7em'}}>
-              <Switch>
-                <Route exact path='/dashboard' component={Dashboard}/>
-            </Switch>
-            </Container>
+           <AppLayout />
           </>
         )}
       />
