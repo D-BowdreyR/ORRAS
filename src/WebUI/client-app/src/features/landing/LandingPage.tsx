@@ -28,7 +28,7 @@ export default function LandingPage() {
           <Segment textAlign='center' vertical>
             <Container text>
               <Header as='h1'>ORRAS</Header>
-              <Header content='Welcome to the Oxford Radiation Research Assurance Service' />
+              <Header content='Welcome to the Oxford Research Radiation Assurance Service' />
               <Button as={Link} to='/dashboard' positive>
                 Sign in
               </Button>
