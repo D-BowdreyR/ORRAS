@@ -1,15 +1,18 @@
-import Icon, { BellOutlined, IdcardOutlined, LogoutOutlined, MailOutlined, NotificationFilled, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import Icon, { BellOutlined, IdcardOutlined, LogoutOutlined, MailOutlined, MenuFoldOutlined, MenuUnfoldOutlined, NotificationFilled, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Menu, Popover } from 'antd';
 import Avatar from 'antd/lib/avatar/avatar';
-import { Header } from 'antd/lib/layout/layout';
+import Layout, { Header } from 'antd/lib/layout/layout';
+import { observer } from 'mobx-react-lite';
 import React from 'react';
+import { useStore } from '../stores/store';
 
 
 
 const { SubMenu } = Menu;
 
-export default function TopNavBar() {
-    
+export default observer(function TopNavBar() {
+  const {sideNavbarStore} = useStore()
+  
   const content = (
     <div>
       <p>Content</p>
@@ -17,9 +20,15 @@ export default function TopNavBar() {
     </div>
   )
   return (
-        <Header style={{background: "#fff"}} className="header">
-        <div className="logo" />
-        <Menu mode="horizontal" theme="light" className="flex-setting">
+    <Header style={{ background: "#fff", padding:0}} className="header">
+      <div>
+      {React.createElement(sideNavbarStore.sider.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+              className: 'trigger',
+        onClick: sideNavbarStore.handleToggle
+            })}
+      </div>
+      <Menu mode="horizontal" theme="light" className="flex-setting">
+      
           <SubMenu icon={<Avatar style={{ marginRight: '5px' }} icon={<UserOutlined/>}/>} style={{float: 'right'}} title="Username">
           <Menu.ItemGroup title="Account Settings">
               <Menu.Item icon={<IdcardOutlined />} key="setting:1">
@@ -48,4 +57,4 @@ export default function TopNavBar() {
         </Menu>
       </Header>
     )
-}
+})

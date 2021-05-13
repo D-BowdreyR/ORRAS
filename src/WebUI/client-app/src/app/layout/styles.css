@@ -16,8 +16,9 @@ body {
 
 .logo {
   height: 32px;
-  width: 35px;
   margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+  background-image: url(./images/radiation.svg);
 }
 
 .flex-setting {
@@ -44,3 +45,14 @@ body {
 }
 
 /* end landing page style */
+.trigger {
+  padding: 0 24px;
+  font-size: 20px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.trigger:hover {
+  color: #1890ff;
+}
+

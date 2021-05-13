@@ -15,21 +15,22 @@ import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
 import Dashboard from '../../features/dashboard/Dashboard';
 import TopNavBar from './TopNavBar';
 import SideNavBar from './SideNavBar';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../stores/store';
 
 const { Header, Sider, Content, Footer } = Layout;
 const { SubMenu } = Menu;
 
-export default function AppLayout() {
+export default observer(function AppLayout() {
   
-  
-
+  const { sideNavbarStore } = useStore();
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
-    <TopNavBar/>
+     <SideNavBar/>
       <Layout>
           {/* <div className="logo" /> */}
-         <SideNavBar/>
+         <TopNavBar/>
     <Layout className="site-layout">
       {/* <Header className="site-layout-background" style={{ padding: 0 }} /> */}
       <Content style={{ margin: "16px 16px", background: "#fff" }}>
@@ -45,4 +46,4 @@ export default function AppLayout() {
   </Layout>
   </Layout>
   );
-}
+})

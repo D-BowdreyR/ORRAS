@@ -6,10 +6,12 @@ import Dashboard from '../../features/dashboard/Dashboard';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import LandingPage from '../../features/landing/LandingPage';
 import AppLayout from './AppLayout';
+import ModalContainer from '../common/modals/ModalContainer';
 
 function App() {
   return (
     <>
+    <ModalContainer />
     <Route exact path='/' component={LandingPage} />
       <Route
         path={'/(.+)'}
