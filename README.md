@@ -4,7 +4,7 @@
 
 :pencil2: **Project Author:** [_Daniel Bowdrey-Roberts_](](https://github.com/D-BowdreyR)
 
-:scroll: Copyright Notice: _This repository and its content is Copyright © 2021 Oxford University NHS Foundation Trust_
+:scroll: Copyright Notice: _This repository and its content is Copyright © 2021 Oxford University Hospitals NHS Foundation Trust_
 
 [GitHub Licensing Terms](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository#choosing-the-right-license)
 
