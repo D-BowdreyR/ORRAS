@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 
 interface Sider {
     collapsed: boolean;
@@ -12,11 +12,13 @@ export default class SideNavBarStore {
         makeAutoObservable(this);
     }
 
+    setCollapse = (result: boolean) => {
+        this.sider.collapsed = result;
+    };
+
     handleToggle = () => {
-        this.sider.collapsed ? this.sider.collapsed = false : this.sider.collapsed = true;
+        this.sider.collapsed ? this.setCollapse(false) : this.setCollapse(true);
       };
     
+    
 }
-
-
-

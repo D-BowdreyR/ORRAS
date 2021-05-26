@@ -17,13 +17,14 @@ const { Header, Sider } = Layout;
 
 export default observer(function SideNavBar() {
   const { sideNavbarStore } = useStore();
+  const {handleToggle, setCollapse} = sideNavbarStore
   
   useEffect(() => {
-    window.innerWidth <= 760 ? sideNavbarStore.sider.collapsed = true : sideNavbarStore.sider.collapsed = false;
+    window.innerWidth <= 760 ? setCollapse(true) : setCollapse(false);
   }, []);
 
   return (
-    <Sider collapsible collapsed={sideNavbarStore.sider.collapsed} onCollapse={() => sideNavbarStore.handleToggle()}>
+    <Sider collapsible collapsed={sideNavbarStore.sider.collapsed} onCollapse={() => handleToggle()}>
       <div className="logo" />
       <Menu theme='dark' defaultSelectedKeys={['/dashboard']} mode='inline'>
         <Menu.Item key='/dashboard' icon={<DashboardOutlined />}>
