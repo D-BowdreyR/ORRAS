@@ -14,7 +14,8 @@ namespace ORRAS.Application.Common.Interfaces
         DbSet<Company> Companies { get; set; }
         DbSet<Department> Departments { get; set; }
         DbSet<Contact> Contacts { get; set; }
-        
+        DbSet<ResearchStudy> ResearchStudies { get; set; }
+
         // describe a SaveChangesAsync override method that must be implemented by the ORM
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

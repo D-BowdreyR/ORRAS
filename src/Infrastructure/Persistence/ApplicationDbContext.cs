@@ -24,6 +24,7 @@ namespace ORRAS.Infrastructure.Persistence
         public DbSet<Company> Companies { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<ResearchStudy> ResearchStudies { get; set; }
 
         // Save method
 
