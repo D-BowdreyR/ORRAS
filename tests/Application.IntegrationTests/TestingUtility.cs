@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.IO;
@@ -88,7 +89,7 @@ public class TestingUtility
 
     // TODO: Implement a RunAsUserAsync method that will set the current user to a Test user account
 
-    // TODO: Implemnet a helper method for this to Create the user in the database
+    // TODO: Implement a helper method for this to Create the user in the database
 
     // TODO: Implement wrapper methods for an Admin User and a normal user
 
@@ -108,6 +109,16 @@ public class TestingUtility
         var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
 
         context.Add(entity);
+        await context.SaveChangesAsync();
+    }
+
+    public static async Task AddRangeAsync<TEntity>(IList<TEntity> entity) where TEntity : class
+    {
+        using var scope = _scopeFactory.CreateScope();
+
+        var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
+
+        context.AddRange(entity);
         await context.SaveChangesAsync();
     }
 
