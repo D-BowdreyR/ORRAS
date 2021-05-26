@@ -39,7 +39,7 @@ namespace ORRAS.Application.IntegrationTests.Companies.Commands
         }
         
         [Test]
-        public async Task Should_Require_Minimum_Fields()
+        public void Should_Require_Minimum_Fields()
         {
             var command = new CreateCompany.Command 
             { 
