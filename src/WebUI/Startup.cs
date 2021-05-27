@@ -1,3 +1,4 @@
+using System;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,15 +31,27 @@ namespace ORRAS.WebUI
             // inject application services into dependency injection
             services.AddApplicationServices();
 
+             // CORS service for dev enviro
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000")
+                        .AllowAnyHeader().AllowAnyMethod();
+                    }
+                );
+            });
+            
             // configure exception handling
             services.AddControllersWithViews(options =>
                 options.Filters.Add<ApiExceptionFilterAttribute>())
                 .AddFluentValidation();
 
-            //TODO: add CORS service
+           
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ORRAS.WebUI", Version = "v1",  });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ORRAS.WebUI", Version = "v1", });
             });
 
             // In production, the React files will be served from this directory
@@ -70,13 +83,13 @@ namespace ORRAS.WebUI
 
             app.UseRouting();
 
-            //TODO: ADD CORS POLICY
+            app.UseCors();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
 
             app.UseSpa(spa =>
@@ -85,7 +98,7 @@ namespace ORRAS.WebUI
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000/");
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
                 }
             });
         }
