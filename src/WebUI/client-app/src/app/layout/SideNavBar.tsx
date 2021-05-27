@@ -25,7 +25,7 @@ export default observer(function SideNavBar() {
 
   return (
     <Sider collapsible collapsed={sideNavbarStore.sider.collapsed} onCollapse={() => handleToggle()}>
-      <div className="logo" />
+      <div className="logo"/>
       <Menu theme='dark' defaultSelectedKeys={['/dashboard']} mode='inline'>
         <Menu.Item key='/dashboard' icon={<DashboardOutlined />}>
           <NavLink to='/dashboard'>
@@ -33,20 +33,27 @@ export default observer(function SideNavBar() {
           </NavLink>
         </Menu.Item>
         <Menu.Item key='/assurancerequests' icon={<EditOutlined />}>
-          <NavLink to='/dashboard'>
+          <NavLink to='/assurancerequests'>
             <span>Assurance Requests</span>
           </NavLink>
         </Menu.Item>
         <Menu.Item key='/researchstudies' icon={<ContainerOutlined />}>
-          <NavLink to='/dashboard'>
+          <NavLink to='/researchstudies'>
             <span>Research Studies</span>
           </NavLink>
         </Menu.Item>
+        <Menu.SubMenu key='/clinicalsubmenu' icon={<MedicineBoxOutlined />} title='Clinical'>
         <Menu.Item key='/clinical' icon={<MedicineBoxOutlined />}>
-          <NavLink to='/dashboard'>
-            <span>Clinical</span>
-          </NavLink>
+          <NavLink to='/clinical'>
+            <span>Dashboard</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key='/clinical2' icon={<MedicineBoxOutlined />}>
+          <NavLink to='/clinical/participants'>
+            <span>Participants</span>
+            </NavLink>
         </Menu.Item>
+        </Menu.SubMenu>
       </Menu>
     </Sider>
   );
