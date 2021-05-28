@@ -4,10 +4,12 @@ import {
   ContainerOutlined,
   DashboardOutlined,
   EditOutlined,
+  ExclamationCircleOutlined,
   HomeOutlined,
   LineChartOutlined,
   MedicineBoxOutlined,
   PieChartOutlined,
+  ToolOutlined,
 } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import { useStore } from '../stores/store';
@@ -53,6 +55,13 @@ export default observer(function SideNavBar() {
             <span>Participants</span>
             </NavLink>
         </Menu.Item>
+        </Menu.SubMenu>
+        <Menu.SubMenu key='/admincentre' icon={<ToolOutlined />} title='Admin Centre'>
+        <Menu.Item key='/errors' icon={<ExclamationCircleOutlined />}>
+          <NavLink to='/errors'>
+            <span>Test Errors</span>
+            </NavLink>
+          </Menu.Item>
         </Menu.SubMenu>
       </Menu>
     </Sider>

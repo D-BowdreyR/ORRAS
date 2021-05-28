@@ -25,5 +25,7 @@ namespace ORRAS.WebUI.Controllers
         {
             return await Mediator.Send(new ListCompanies.Query(), ct);
         }
+
+        // TODO: add Create, Update and Delete endpoints for companies
     }
 }

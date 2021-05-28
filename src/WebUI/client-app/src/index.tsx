@@ -8,6 +8,7 @@ import 'antd/dist/antd.css';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
+// enables the use of history throughout the app, not just in components
 export const history = createBrowserHistory();
 
 ReactDOM.render(

@@ -7,6 +7,9 @@ import { observer } from 'mobx-react-lite';
 import StudyDashboard from '../../features/studies/dashboard/StudyDashboard';
 import AssuranceRequestsDashboard from '../../features/assurancerequests/dashboard/AssuranceRequestsDashboard';
 import ClinicalDashboard from '../../features/clinical/dashboard/ClinicalDashboard';
+import TestErrors from '../../features/errors/TestError';
+import NotFound from '../../features/errors/NotFound';
+import ServerError from '../../features/errors/ServerError';
 
 const { Content, Footer } = Layout;
 
@@ -22,11 +25,16 @@ export default observer(function AppLayout() {
       {/* <Header className="site-layout-background" style={{ padding: 0 }} /> */}
       <Content style={{ margin: "16px 16px", background: "#fff" }}>
         <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
-          <Switch>
+              <Switch>
+                
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/researchstudies" component={StudyDashboard} />
                 <Route exact path="/assurancerequests" component={AssuranceRequestsDashboard} />
-                <Route exact path="/clinical" component={ClinicalDashboard}/>
+                <Route exact path="/clinical" component={ClinicalDashboard} />
+                <Route exact path="/errors" component={TestErrors} />
+                <Route path='/server-error' component={ServerError} />
+                <Route component={NotFound} />
+
                 
           </Switch>
         </div>
