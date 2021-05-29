@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ORRAS.Application.Common.Interfaces;
 using ORRAS.Domain.Entities;
 
-namespace ORRAS.Application.Companies.Queries
+namespace ORRAS.Application.Features.Companies.Queries
 {
     public class ListCompanies
     {

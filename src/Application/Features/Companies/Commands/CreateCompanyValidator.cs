@@ -4,7 +4,7 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using ORRAS.Application.Common.Interfaces;
 
-namespace ORRAS.Application.Companies.Commands
+namespace ORRAS.Application.Features.Companies.Commands
 {
     public class CreateCompanyValidator : AbstractValidator<CreateCompany.Command>
     {

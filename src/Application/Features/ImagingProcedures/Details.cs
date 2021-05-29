@@ -5,27 +5,28 @@ using MediatR;
 using ORRAS.Application.Common.Interfaces;
 using ORRAS.Domain.Entities;
 
-namespace ORRAS.Application.ImagingModalities
+namespace ORRAS.Application.Features.ImagingProcedures
 {
     public class Details
     {
-        public class Query : IRequest<ImagingModality>
+        public class Query : IRequest<ImagingProcedure> 
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, ImagingModality>
+        public class Handler : IRequestHandler<Query, ImagingProcedure>
         {
             private readonly IApplicationDbContext _context;
             public Handler(IApplicationDbContext context)
             {
                 _context = context;
-
             }
-            public async Task<ImagingModality> Handle(Query request, CancellationToken cancellationToken)
+
+            public async Task<ImagingProcedure> Handle(Query request, CancellationToken cancellationToken)
             {
-                var modality = await _context.ImagingModalities.FindAsync(request.Id);
-                return modality;
+                var procedures = await _context.ImagingProcedures.FindAsync(request.Id);
+
+                return procedures;
             }
         }
     }

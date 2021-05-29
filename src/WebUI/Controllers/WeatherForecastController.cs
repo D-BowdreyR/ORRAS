@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ORRAS.Application.WeatherForecasts.Queries;
+using ORRAS.Application.Features.WeatherForecasts.Queries;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
-using ORRAS.Application.Companies.Queries;
 using ORRAS.Domain.Entities;
 using System.Linq;
+using ORRAS.Application.Features.Companies.Queries;
 
 namespace ORRAS.Application.IntegrationTests.Companies.Queries
 {

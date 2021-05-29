@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ORRAS.Domain.Entities;
-using ORRAS.Application.ImagingProcedures;
+using ORRAS.Application.Features.ImagingProcedures;
 
 namespace ORRAS.WebUI.Controllers
 {

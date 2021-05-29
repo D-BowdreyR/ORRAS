@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using System.Reflection;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using ORRAS.Application.Common.Behaviours;
-using ORRAS.Application.Companies.Queries;
 
 namespace ORRAS.Application.Extensions
 {

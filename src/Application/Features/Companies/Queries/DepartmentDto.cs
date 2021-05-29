@@ -1,6 +1,6 @@
 using System;
 
-namespace ORRAS.Application.Companies.Queries
+namespace ORRAS.Application.Features.Companies.Queries
 {
     public class DepartmentDto
     {

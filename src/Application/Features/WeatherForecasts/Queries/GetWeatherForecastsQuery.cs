@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ORRAS.Application.WeatherForecasts.Queries
+namespace ORRAS.Application.Features.WeatherForecasts.Queries
 {
     public class GetWeatherForecastsQuery : IRequest<IEnumerable<WeatherForecast>>
     {

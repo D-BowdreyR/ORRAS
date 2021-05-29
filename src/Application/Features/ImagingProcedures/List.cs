@@ -6,26 +6,25 @@ using Microsoft.EntityFrameworkCore;
 using ORRAS.Application.Common.Interfaces;
 using ORRAS.Domain.Entities;
 
-namespace ORRAS.Application.ImagingModalities
+namespace ORRAS.Application.Features.ImagingProcedures
 {
     public class List
     {
-        public class Query : IRequest<List<ImagingModality>> { }
+        public class Query : IRequest<List<ImagingProcedure>> {}
 
-        public class Handler : IRequestHandler<Query, List<ImagingModality>>
+        public class Handler : IRequestHandler<Query, List<ImagingProcedure>>
         {
             private readonly IApplicationDbContext _context;
             public Handler(IApplicationDbContext context)
             {
                 _context = context;
-
             }
 
-            public async Task<List<ImagingModality>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<List<ImagingProcedure>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var modalities = await _context.ImagingModalities.ToListAsync(cancellationToken);
+                var procedures = await _context.ImagingProcedures.ToListAsync();
 
-                return modalities;
+                return procedures;
             }
         }
     }
