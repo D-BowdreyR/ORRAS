@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using FluentValidation;
 using NUnit.Framework;
-using ORRAS.Application.Companies.Commands;
+using ORRAS.Application.Features.Companies.Commands;
 using ORRAS.Domain.Entities;
 
 namespace ORRAS.Application.IntegrationTests.Companies.Commands
@@ -18,7 +18,7 @@ namespace ORRAS.Application.IntegrationTests.Companies.Commands
             // arrange
             await SendAsync(new CreateCompany.Command
             {
-                Company = new Company 
+                Company = new NewCompanyDto 
                 {   Id = Guid.NewGuid(), 
                     DisplayName = "Oxford Univerity"
                 }
@@ -26,7 +26,7 @@ namespace ORRAS.Application.IntegrationTests.Companies.Commands
 
             var command = new CreateCompany.Command 
             { 
-                Company = new Company 
+                Company = new NewCompanyDto 
                 {   Id = Guid.NewGuid(),
                     DisplayName = "Oxford Univerity"
                 }
@@ -43,7 +43,7 @@ namespace ORRAS.Application.IntegrationTests.Companies.Commands
         {
             var command = new CreateCompany.Command 
             { 
-                Company = new Company 
+                Company = new NewCompanyDto 
                 {   Id = Guid.NewGuid(),
                     Abbreviation = "UO"
                 }
@@ -60,7 +60,7 @@ namespace ORRAS.Application.IntegrationTests.Companies.Commands
         {
             var command = new CreateCompany.Command
             {
-                Company = new Company
+                Company = new NewCompanyDto
                 {
                     Id = Guid.NewGuid(),
                     DisplayName = "The Test Company",
