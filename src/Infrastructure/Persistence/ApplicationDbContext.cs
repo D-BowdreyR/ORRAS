@@ -6,10 +6,12 @@ using Microsoft.EntityFrameworkCore;
 using ORRAS.Application.Common.Interfaces;
 using ORRAS.Domain.Entities;
 using ORRAS.Domain.Common;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using ORRAS.Infrastructure.Identity;
 
 namespace ORRAS.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : DbContext, IApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext<AppUser>, IApplicationDbContext
     {
         private readonly IDateTime _dateTime;
         public ApplicationDbContext(DbContextOptions options,

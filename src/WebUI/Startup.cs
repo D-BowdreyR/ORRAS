@@ -1,16 +1,23 @@
 using System;
+using System.Text;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ORRAS.Application.Extensions;
+using ORRAS.Infrastructure.Identity;
+using ORRAS.Infrastructure.Persistence;
 using ORRAS.Infrastructure.Persistence.Extensions;
 using ORRAS.WebUI.Filters;
+using ORRAS.WebUI.Services;
 
 namespace ORRAS.WebUI
 {
@@ -26,12 +33,37 @@ namespace ORRAS.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+             // inject application services into dependency injection
+            services.AddApplicationServices();
             // inject infrastructure services into dependency injection
             services.AddInfrastructureServices(Configuration);
-            // inject application services into dependency injection
-            services.AddApplicationServices();
+            
+            services.AddHttpContextAccessor();
+            
+            // setup identity services
+            services.AddIdentityCore<AppUser>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+            })
+            .AddEntityFrameworkStores<ApplicationDbContext>().AddSignInManager<SignInManager<AppUser>>();
 
-             // CORS service for dev enviro
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = GenerateKey(Configuration["TokenKey"]),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+
+            services.AddScoped<TokenService>();
+
+
+            // CORS service for dev enviro
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
@@ -59,6 +91,13 @@ namespace ORRAS.WebUI
             {
                 configuration.RootPath = "client-app/build";
             });
+
+            
+        }
+
+        private static SecurityKey GenerateKey(string key)
+        {
+           return new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,6 +124,7 @@ namespace ORRAS.WebUI
 
             app.UseCors();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

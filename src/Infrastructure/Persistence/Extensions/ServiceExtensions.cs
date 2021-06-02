@@ -1,8 +1,9 @@
-using System.Globalization;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ORRAS.Application.Common.Interfaces;
+using ORRAS.Infrastructure.Identity;
 using ORRAS.Infrastructure.Services;
 
 namespace ORRAS.Infrastructure.Persistence.Extensions
@@ -26,7 +27,7 @@ namespace ORRAS.Infrastructure.Persistence.Extensions
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 
-            services.AddTransient<IDateTime, DateTimeService>();
+            services.AddTransient<IDateTime, DateTimeService>();          
 
 
             return services;

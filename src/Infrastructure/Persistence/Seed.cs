@@ -7,16 +7,38 @@ using ORRAS.Domain.Entities;
 using System.Collections.Generic;
 using ORRAS.Domain.Enums;
 using ORRAS.Domain.ValueObjects;
+using Microsoft.AspNetCore.Identity;
+using ORRAS.Infrastructure.Identity;
 
 namespace ORRAS.Infrastructure.Persistence
 {
     public class Seed
     {
-        public static async Task SeedDataAsync(ApplicationDbContext context)
+        public static async Task SeedDataAsync(ApplicationDbContext context, UserManager<AppUser> userManager)
         {
 
-            //TODO: check if seed is necessary
-            if (!context.ImagingModalities.Any())
+            if(!userManager.Users.Any())
+            {
+                var users = new List<AppUser>
+                {
+                    new AppUser{DisplayName = "TestAccount1", UserName = "TestAccount1", Email = "testaccount1@test.com"},
+                    new AppUser{DisplayName = "TestAccount2", UserName = "TestAccount2", Email = "testaccount2@test.com"},
+                    new AppUser{DisplayName = "TestAccount3", UserName = "TestAccount3", Email = "testaccount3@test.com"},
+                    new AppUser{DisplayName = "TestAccount4", UserName = "TestAccount4", Email = "testaccount4@test.com"},
+                    new AppUser{DisplayName = "TestAccount5", UserName = "TestAccount5", Email = "testaccount5@test.com"},
+                    new AppUser{DisplayName = "TestAccount6", UserName = "TestAccount6", Email = "testaccount6@test.com"},
+                    new AppUser{DisplayName = "TestAccount7", UserName = "TestAccount7", Email = "testaccount7@test.com"}
+                };
+
+                foreach (var user in users)
+                {
+                    await userManager.CreateAsync(user, "Pa$$w0rd");
+                }
+            }
+
+
+           //TODO: check if seed is necessary
+                if (!context.ImagingModalities.Any())
             {
                 var modalities = new List<ImagingModality>
                 {
