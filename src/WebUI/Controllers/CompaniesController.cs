@@ -8,6 +8,7 @@ using ORRAS.Infrastructure.Persistence;
 using ORRAS.Application.Features.Companies.Queries;
 using ORRAS.Application.Features.Companies.Commands;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ORRAS.WebUI.Controllers
 {
@@ -21,6 +22,8 @@ namespace ORRAS.WebUI.Controllers
         {
             return await Mediator.Send(new Details.Query { Id = id });
         }
+        
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<CompaniesVm>> List(CancellationToken ct)
         {
