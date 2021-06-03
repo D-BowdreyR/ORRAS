@@ -10,11 +10,17 @@ import ClinicalDashboard from '../../features/clinical/dashboard/ClinicalDashboa
 import TestErrors from '../../features/errors/TestError';
 import NotFound from '../../features/errors/NotFound';
 import ServerError from '../../features/errors/ServerError';
+import { useStore } from '../stores/store';
+import LoadingPage from './LoadingPage';
 
 const { Content, Footer } = Layout;
 
 export default observer(function AppLayout() {
 
+  const { commonStore } = useStore();
+
+  if(!commonStore.appLoaded) return <LoadingPage/>
+  
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <SideNavBar />

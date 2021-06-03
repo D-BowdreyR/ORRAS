@@ -16,13 +16,14 @@ import {
   Menu,
   GridRow,
 } from 'semantic-ui-react';
+import CommonStore from '../../app/stores/commonStore';
 import { useStore } from '../../app/stores/store';
 import LoginForm from '../users/LoginForm';
 import LandingPageFooter from './LandingPageFooter';
 import LandingPageHeader from './LandingPageHeader';
 
 export default observer(function LandingPage() {
-  const { modalStore } = useStore();
+  const { modalStore, userStore } = useStore();
   
   return (
     <Layout style={{ minHeight: '100vh', background: "#fff"}}>
@@ -32,15 +33,20 @@ export default observer(function LandingPage() {
           <Segment textAlign='center' vertical>
             <Container text>
               <Header as='h1'>ORRAS</Header>
-              <Header content='Welcome to the Oxford Research Radiation Assurance Service'/>
-              <Button positive onClick={() => modalStore.openModal(<LoginForm />)}>
+              <Header content='Welcome to the Oxford Research Radiation Assurance Service' />
+              {userStore.isLoggedIn ? (
+                <Button positive as={Link} to='/dashboard' content="Go to your Dashboard" />
+              ) : ( <>
+                <Button positive onClick={() => modalStore.openModal(<LoginForm />)}>
                 Login
               </Button>
               <Segment textAlign='center' vertical style={{ marginTop: 10 }}>
                 <Message compact info>
                   New to us? <a href='#'>Register Here</a>
-                </Message>
+                    </Message>
               </Segment>
+              </>
+              )}
             </Container>
           </Segment>
         </Container>

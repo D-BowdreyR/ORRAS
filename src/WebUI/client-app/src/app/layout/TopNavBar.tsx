@@ -11,7 +11,8 @@ import { useStore } from '../stores/store';
 const { SubMenu } = Menu;
 
 export default observer(function TopNavBar() {
-  const {sideNavbarStore} = useStore()
+  const { sideNavbarStore, userStore: {user, logout} } = useStore();
+  
   
   const content = (
     <div>
@@ -29,7 +30,7 @@ export default observer(function TopNavBar() {
       </div>
       <Menu mode="horizontal" theme="light" className="flex-setting">
       
-          <SubMenu icon={<Avatar style={{ marginRight: '5px' }} icon={<UserOutlined/>}/>} style={{float: 'right'}} title="Username">
+          <SubMenu icon={<Avatar style={{ marginRight: '5px' }} icon={<UserOutlined/>}/>} style={{float: 'right'}} title={user?.displayName}>
           <Menu.ItemGroup title="Account Settings">
               <Menu.Item icon={<IdcardOutlined />} key="setting:1">
                 <a href={"/profile/"} target="_self">
@@ -38,11 +39,7 @@ export default observer(function TopNavBar() {
               </Menu.Item>
           </Menu.ItemGroup>  
           <Menu.ItemGroup>
-              <Menu.Item icon={<LogoutOutlined/>} key="setting:2">
-                <a href={"/accounts/logout/"} target="_self">
-                  Signout
-                </a>
-            </Menu.Item>
+              <Menu.Item icon={<LogoutOutlined/>} onClick={() => logout()} key="setting:2">Sign Out</Menu.Item>
           </Menu.ItemGroup>
           
           </SubMenu>

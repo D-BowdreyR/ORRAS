@@ -1,6 +1,7 @@
 import { message } from 'antd';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { history } from '../..';
+import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
 
 const sleep = (delay: number) => {
@@ -9,6 +10,13 @@ const sleep = (delay: number) => {
     })
 }
 axios.defaults.baseURL = "http://localhost:5000/api";
+
+// send bearer token with every client request
+axios.interceptors.request.use(config => {
+    const token = store.commonStore.token;
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+})
 
 // provides a delay to the response to support the indicating of loading
 axios.interceptors.response.use(async response => {
@@ -62,9 +70,17 @@ const Studies = {
     list:() => requests.get('/studies')
 }
 
+// http methods for account endpoint
+const Account = {
+    current: () => requests.get('/account'),
+    login: (user: UserFormValues) => requests.post('/account/login', user),
+    register: (user: UserFormValues) => requests.post('/account/register', user)
+}
+
 
 const agent = {
-    Studies
+    Studies,
+    Account
 }
 
 export default agent;

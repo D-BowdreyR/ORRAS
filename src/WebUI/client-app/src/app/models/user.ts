@@ -1,6 +1,8 @@
 export interface User {
     username: string
     displayName: string
+    jobTitle: string
+    token: string
 
 }
 
