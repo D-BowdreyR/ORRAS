@@ -12,8 +12,9 @@ import NotFound from '../../features/errors/NotFound';
 import ServerError from '../../features/errors/ServerError';
 import { useStore } from '../stores/store';
 import LoadingPage from './LoadingPage';
+import StudyDetails from '../../features/studies/details/StudyDetails';
 
-const { Content, Footer } = Layout;
+const {Header, Content, Footer } = Layout;
 
 export default observer(function AppLayout() {
 
@@ -25,10 +26,11 @@ export default observer(function AppLayout() {
     <Layout style={{ minHeight: '100vh' }}>
       <SideNavBar />
       <Layout>
-      {/* <div className="logo" /> */}
+        {/* <div className="logo" /> */}
+        {/* <Header style={{ background: "#fff", padding:0}} /> */}
          <TopNavBar/>
     <Layout className="site-layout">
-      {/* <Header className="site-layout-background" style={{ padding: 0 }} /> */}
+      
       <Content style={{ margin: "16px 16px", background: "#fff" }}>
         <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
               <Switch>
@@ -37,6 +39,7 @@ export default observer(function AppLayout() {
                 <Route exact path="/researchstudies" component={StudyDashboard} />
                 <Route exact path="/assurancerequests" component={AssuranceRequestsDashboard} />
                 <Route exact path="/clinical" component={ClinicalDashboard} />
+                <Route path='/researchstudies/:id' component={StudyDetails} />
                 <Route exact path="/errors" component={TestErrors} />
                 <Route path='/server-error' component={ServerError} />
                 <Route component={NotFound} />

@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Study } from "../models/study";
 
@@ -18,6 +18,7 @@ export default class StudyStore {
             // TODO: this smells - sort out date handling strategy
             Date.parse(a.created) - Date.parse(b.created));
     }
+
     
     loadStudies = async () => {
         this.setLoadingInitial(true);
@@ -33,7 +34,32 @@ export default class StudyStore {
         }
     }
 
-    private setStudy = (study: Study) => {
+    
+    loadStudy = async (id:string) => {
+        let study = this.getStudy(id);
+        if (study) {
+            this.selectedStudy = study;
+            return study;
+        } else {
+            this.loadingInitial = true;
+            try {
+                study = await agent.Studies.details(id);
+                this.setStudy(study);
+                runInAction(() => { this.selectedStudy = study });
+                this.setLoadingInitial(false);
+                return study;
+            } catch (error) {
+                console.log(error);
+                this.setLoadingInitial(false);
+            }
+        }
+    }
+
+    private getStudy = (id: string) => {
+        return this.studyRegistry.get(id);
+    }
+    // TODO: add back strong typing
+    private setStudy = (study: any) => {
 
         // TODO: this smells - sort out date handling strategy
         study.created = study.created.split('T')[0];

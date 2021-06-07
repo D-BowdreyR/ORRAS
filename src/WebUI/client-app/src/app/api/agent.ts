@@ -65,9 +65,11 @@ const requests = {
     del: (url: string) => axios.delete(url).then(responseBody),
 }
 
-// http methods for a resource go here
+// http methods for each resource go here
+
 const Studies = {
-    list:() => requests.get('/studies')
+    list: () => requests.get('/studies'),
+    details: (id: string) => requests.get(`/studies/${id}`)
 }
 
 // http methods for account endpoint
@@ -77,7 +79,7 @@ const Account = {
     register: (user: UserFormValues) => requests.post('/account/register', user)
 }
 
-
+// register methods with agent
 const agent = {
     Studies,
     Account
