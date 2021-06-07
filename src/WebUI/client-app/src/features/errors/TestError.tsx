@@ -38,7 +38,7 @@ export default function TestErrors() {
   }
 
   function handleValidationError() {
-    axios.post(baseUrl + 'companies', {}).catch((err) => setErrors(err));
+    axios.post(baseUrl + 'companies', {"id":null,"displayName":null,"Abbreviation":null}).catch((err) => setErrors(err));
   }
 
   return (

@@ -28,7 +28,7 @@ namespace ORRAS.Application.Features.Companies.Queries
 
             public async Task<Company> Handle(Query request, CancellationToken cancellationToken)
             {
-                var company = await _context.Companies.FindAsync(request.Id);
+                var company = await _context.Companies.FindAsync(request.Id, cancellationToken);
 
                 if (company == null) 
                 {

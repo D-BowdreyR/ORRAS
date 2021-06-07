@@ -31,8 +31,10 @@ namespace ORRAS.Application.Features.Companies.Commands
 
                 _context.Companies.Add(newcompany);
 
-                var result = await _context.SaveChangesAsync(cancellationToken) > 0;
-                
+                // TODO: add exception handling for database save error
+                // https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-5.0
+                _ = await _context.SaveChangesAsync(cancellationToken) > 0;
+
                 return Unit.Value;
             }
         }

@@ -5,6 +5,6 @@ namespace ORRAS.Domain.Entities
     {
         public Guid Id { get; set; }
         public bool IsSuperseeded { get; set; }
-        public DateTime version { get; set; }
+        public DateTime Version { get; set; }
     }
 }

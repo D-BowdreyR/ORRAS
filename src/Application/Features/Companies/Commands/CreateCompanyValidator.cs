@@ -26,7 +26,7 @@ namespace ORRAS.Application.Features.Companies.Commands
         private async Task<bool> BeUniqueCompanyName(string displayName, CancellationToken cancellationToken)
         {
             return await _context.Companies
-                .AllAsync(c => c.DisplayName != displayName);
+                .AllAsync(c => c.DisplayName != displayName, cancellationToken);
         }
     }
 }

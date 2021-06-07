@@ -24,7 +24,7 @@ namespace ORRAS.Application.Features.ImagingModalities
             }
             public async Task<ImagingModality> Handle(Query request, CancellationToken cancellationToken)
             {
-                var modality = await _context.ImagingModalities.FindAsync(request.Id);
+                var modality = await _context.ImagingModalities.FindAsync(request.Id, cancellationToken);
                 return modality;
             }
         }

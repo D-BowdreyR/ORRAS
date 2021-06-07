@@ -22,7 +22,7 @@ namespace ORRAS.Application.Features.ImagingProcedures
 
             public async Task<List<ImagingProcedure>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var procedures = await _context.ImagingProcedures.ToListAsync();
+                var procedures = await _context.ImagingProcedures.ToListAsync(cancellationToken);
 
                 return procedures;
             }

@@ -24,7 +24,7 @@ namespace ORRAS.Application.Features.ImagingProcedures
 
             public async Task<ImagingProcedure> Handle(Query request, CancellationToken cancellationToken)
             {
-                var procedures = await _context.ImagingProcedures.FindAsync(request.Id);
+                var procedures = await _context.ImagingProcedures.FindAsync(request.Id, cancellationToken);
 
                 return procedures;
             }
