@@ -37,14 +37,14 @@ namespace ORRAS.WebUI.Controllers
             return await Mediator.Send(new CreateCompany.Command{Company = company}, ct);
         }
         [HttpPut("{id}")]
-        public async Task<ActionResult> EditCompany()
+        public ActionResult EditCompany()
         {
             return NoContent();
         }
 
         [HttpDelete("{id}")]
 
-         public async Task<ActionResult> DeleteCompany()
+        public ActionResult DeleteCompany()
         {
             return NoContent();
         }

@@ -5,7 +5,6 @@ namespace ORRAS.Domain.Entities.Enums
 {
     public class PersonTitle
     {
-        private readonly string _title;
         public static PersonTitle Mr { get; } = new PersonTitle(0, "Mr");
         public static PersonTitle Mrs { get; } = new PersonTitle(1, "Mrs");
         public static PersonTitle Ms { get; } = new PersonTitle(2, "Ms");
