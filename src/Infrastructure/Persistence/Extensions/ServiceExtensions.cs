@@ -13,17 +13,11 @@ namespace ORRAS.Infrastructure.Persistence.Extensions
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration config)
         {
             // build services here
-            if (config.GetValue<bool>("UseInMemoryDatabase"))
-            {
-                services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseInMemoryDatabase("ORRAS_Db"));
-            }
-            else 
-            {
-                services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(config.GetConnectionString("AzureSQL"),
-                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-            }
+            
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(config.GetConnectionString("AzureSQL"),
+                b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+            
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 
