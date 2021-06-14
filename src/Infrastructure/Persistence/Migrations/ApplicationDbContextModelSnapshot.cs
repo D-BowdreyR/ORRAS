@@ -2,8 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ORRAS.Infrastructure.Persistence;
 
 namespace ORRAS.Infrastructure.Persistence.Migrations
@@ -15,32 +15,33 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.3")
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("ProductVersion", "5.0.6")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasDatabaseName("RoleNameIndex");
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
                 });
@@ -49,18 +50,18 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -73,18 +74,18 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -96,17 +97,17 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -118,10 +119,10 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -133,112 +134,42 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ORRAS.Domain.Entities.AppUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("text");
-
-                    b.Property<string>("DisplayName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("JobTitle")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex");
-
-                    b.ToTable("AspNetUsers");
-                });
-
             modelBuilder.Entity("ORRAS.Domain.Entities.Company", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Abbreviation")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DisplayName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -249,37 +180,37 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("DepartmentId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("EmailAddress")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("JobTitle")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MiddleName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Qualification")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TelephoneNumber")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -292,25 +223,25 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Acronym")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("CompanyId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DepartmentName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDefault")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -323,22 +254,22 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ModalityCode")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ModalityName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -351,50 +282,50 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("BodyPartMultiplicationFactor")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DisplayTerm")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeprecated")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDiagnostic")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsInterventional")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("ModalityId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("RecommendedSubstituteProcedure")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SNOMEDCT_ConceptID")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SNOMEDCT_FSN")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SNOMEDCT_LateralityID")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ShortCode")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -407,62 +338,133 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Acronym")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("EstimatedEndDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("EstimatedStartDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<float>("EstimatedTotalDurationInMonths")
                         .HasColumnType("real");
 
                     b.Property<string>("EudraCTReference")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HRAReference")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IrasProjectID")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsInvolvingMedicalDeviceTrial")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsInvolvingRadioactiveSubstances")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsInvolvingRadiotherapy")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsMultiCentre")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("LocalPID")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LongTitle")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NumberOfUKCentres")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("ShortTitle")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("ResearchStudies");
+                });
+
+            modelBuilder.Entity("ORRAS.Infrastructure.Identity.AppUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("JobTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -476,7 +478,7 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("ORRAS.Domain.Entities.AppUser", null)
+                    b.HasOne("ORRAS.Infrastructure.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -485,7 +487,7 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("ORRAS.Domain.Entities.AppUser", null)
+                    b.HasOne("ORRAS.Infrastructure.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -500,7 +502,7 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ORRAS.Domain.Entities.AppUser", null)
+                    b.HasOne("ORRAS.Infrastructure.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -509,7 +511,7 @@ namespace ORRAS.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("ORRAS.Domain.Entities.AppUser", null)
+                    b.HasOne("ORRAS.Infrastructure.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

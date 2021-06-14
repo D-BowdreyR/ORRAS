@@ -21,7 +21,7 @@ namespace ORRAS.Infrastructure.Persistence.Extensions
             else 
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseNpgsql(config.GetConnectionString("PostgreSQL"),
+                    options.UseSqlServer(config.GetConnectionString("AzureSQL"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
 

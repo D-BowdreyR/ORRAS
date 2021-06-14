@@ -40,6 +40,9 @@ namespace ORRAS.WebUI
             services.AddInfrastructureServices(Configuration);
             
             services.AddHttpContextAccessor();
+
+            services.AddHealthChecks()
+                .AddDbContextCheck<ApplicationDbContext>();
             
             // setup identity services
             services.AddIdentityCore<AppUser>(opt =>
@@ -116,6 +119,7 @@ namespace ORRAS.WebUI
                 app.UseHsts();
             }
 
+            app.UseHealthChecks("/health");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
