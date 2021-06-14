@@ -44,14 +44,12 @@ namespace ORRAS.Infrastructure.Persistence
                 {
                     new ImagingModality
                     {
-                        Id = Guid.NewGuid(),
                         ModalityCode = "A",
                         ModalityName = "Angiography",
 
                         ImagingProcedures =
                         {
                             new ImagingProcedure {
-                                Id = 58588,
                                 Status = ImagingProcedureStatus.Active,
                                 ShortCode = "FPACE",
                                 DisplayTerm = "Cardiac pacing wire screening",
@@ -62,7 +60,6 @@ namespace ORRAS.Infrastructure.Persistence
                                 SNOMEDCT_FSN = "Fluoroscopy of heart for checking of cardiac pacemaker electrode position (procedure)"
                             },
                             new ImagingProcedure {
-                                Id = 58589,
                                 Status = ImagingProcedureStatus.Active,
                                 ShortCode = "FPASC",
                                 DisplayTerm = "Cardiac permanent pacemaker check",
@@ -73,7 +70,6 @@ namespace ORRAS.Infrastructure.Persistence
                                 SNOMEDCT_FSN = "Fluoroscopy of heart for checking of permanent pacemaker position (procedure)"
                             },
                             new ImagingProcedure {
-                                Id = 4082,
                                 Status = ImagingProcedureStatus.Active,
                                 ShortCode = "FALLR",
                                 DisplayTerm = "Angio lower limbs Right",
@@ -88,13 +84,11 @@ namespace ORRAS.Infrastructure.Persistence
                     },
                     new ImagingModality
                     {
-                        Id = Guid.NewGuid(),
                         ModalityCode = "X",
                         ModalityName = "X-Ray",
                         ImagingProcedures =
                         {
                             new ImagingProcedure {
-                                Id = 3032,
                                 Status = ImagingProcedureStatus.Active,
                                 ShortCode = "XPATR",
                                 DisplayTerm = "XR Patella Rt",
@@ -118,21 +112,18 @@ namespace ORRAS.Infrastructure.Persistence
                 {
                     new Company
                     {
-                        Id = Guid.NewGuid(),
                         DisplayName = "Oxford University Hospitals NHS Foundation Trust",
                         Abbreviation = "OUH NHS FT",
                         Departments =
                         {
                             new Department
                             {
-                                Id = Guid.NewGuid(),
                                 DepartmentName = "Medical Physics and Clinical Engineering",
                                 Acronym = "MPCE",
                                 Contacts =
                                 {
                                     new Contact
                                     {
-                                        Id = Guid.NewGuid(),
                                         FirstName = "James",
                                         LastName = "Harries",
                                         JobTitle = "Head of Business and Informatics",
@@ -153,7 +144,6 @@ namespace ORRAS.Infrastructure.Persistence
                 {
                     new ResearchStudy
                     {
-                        Id = Guid.NewGuid(),
                         LocalPID = "15044",
                         IrasProjectID = "20/LO/0963",
                         ShortTitle = "SGNTUC-016 / HER2CLIMB-02",
@@ -166,7 +156,6 @@ namespace ORRAS.Infrastructure.Persistence
                     },
                     new ResearchStudy
                     {
-                        Id = Guid.NewGuid(),
                         IrasProjectID = "1061/MODREC/20",
                         LongTitle = "Military COVID, Outcomes in a Viral Infectious Disease",
                         ShortTitle = "M-COVID Military COVID trial",
@@ -177,7 +166,6 @@ namespace ORRAS.Infrastructure.Persistence
                     },
                     new ResearchStudy
                     {
-                        Id = Guid.NewGuid(),
                         IrasProjectID = "20/SC/0111",
                         LongTitle = "DREAMM 7: A Multicenter, Open-Label, Randomized Phase III Study to Evaluate the Efficacy and Safety of the Combination of Belantamab Mafodotin, Bortezomib, and Dexamethasone (B-Vd) Compared with the Combination of Daratumumab, Bortezomib and Dexamethasone (D-Vd) in Participants with Relapsed/Refractory Multiple Myeloma",
                         ShortTitle = "DREAMM 7: A Multicenter, Open-Label, Randomized Phase III Study",
