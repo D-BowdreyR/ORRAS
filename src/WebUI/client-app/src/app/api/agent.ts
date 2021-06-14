@@ -9,7 +9,7 @@ const sleep = (delay: number) => {
         setTimeout(resolve, delay)
     })
 }
-axios.defaults.baseURL = "http://localhost:5000/api";
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 // send bearer token with every client request
 axios.interceptors.request.use(config => {
@@ -20,7 +20,7 @@ axios.interceptors.request.use(config => {
 
 // provides a delay to the response to support the indicating of loading
 axios.interceptors.response.use(async response => {
-        await sleep(1000);
+        if(process.env.NODE_ENV === 'development') await sleep(1000);
         return response;
 }, (error: AxiosError) => {
     const { data, status, config } = error.response!;
