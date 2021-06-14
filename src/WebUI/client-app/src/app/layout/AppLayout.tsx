@@ -13,6 +13,7 @@ import ServerError from '../../features/errors/ServerError';
 import { useStore } from '../stores/store';
 import LoadingPage from './LoadingPage';
 import StudyDetails from '../../features/studies/details/StudyDetails';
+import PrivateRoute from './PrivateRoute';
 
 const {Header, Content, Footer } = Layout;
 
@@ -35,12 +36,12 @@ export default observer(function AppLayout() {
         <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
               <Switch>
                 
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/researchstudies" component={StudyDashboard} />
-                <Route exact path="/assurancerequests" component={AssuranceRequestsDashboard} />
-                <Route exact path="/clinical" component={ClinicalDashboard} />
-                <Route path='/researchstudies/:id' component={StudyDetails} />
-                <Route exact path="/errors" component={TestErrors} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/researchstudies" component={StudyDashboard} />
+                <PrivateRoute exact path="/assurancerequests" component={AssuranceRequestsDashboard} />
+                <PrivateRoute exact path="/clinical" component={ClinicalDashboard} />
+                <PrivateRoute path='/researchstudies/:id' component={StudyDetails} />
+                <PrivateRoute exact path="/errors" component={TestErrors} />
                 <Route path='/server-error' component={ServerError} />
                 <Route component={NotFound} />
 
