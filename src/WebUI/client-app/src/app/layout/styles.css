@@ -39,6 +39,14 @@ body {
     overflow: hidden;
 }
 
+.landing-header{
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+
+}
+
 .landing-image {
   background-image: url(./images/scanner.jpg);
   background-position: center center;
@@ -49,7 +57,7 @@ body {
 
 /* end landing page style */
 .trigger {
-  padding: 0 24px;
+  margin-left: 16px;
   font-size: 20px;
   line-height: 64px;
   cursor: pointer;

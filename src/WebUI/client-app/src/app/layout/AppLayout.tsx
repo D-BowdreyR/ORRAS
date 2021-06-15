@@ -1,6 +1,6 @@
 import { Layout } from 'antd';
 import { Route, Switch } from 'react-router-dom';
-import Dashboard from '../../features/dashboard/Dashboard';
+import Dashboard from '../../features/home/Home';
 import TopNavBar from './TopNavBar';
 import SideNavBar from './SideNavBar';
 import { observer } from 'mobx-react-lite';
@@ -14,6 +14,7 @@ import { useStore } from '../stores/store';
 import LoadingPage from './LoadingPage';
 import StudyDetails from '../../features/studies/details/StudyDetails';
 import PrivateRoute from './PrivateRoute';
+import Home from '../../features/home/Home';
 
 const {Header, Content, Footer } = Layout;
 
@@ -24,7 +25,7 @@ export default observer(function AppLayout() {
   if(!commonStore.appLoaded) return <LoadingPage/>
   
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout hasSider style={{ minHeight: '100vh' }}>
       <SideNavBar />
       <Layout>
         {/* <div className="logo" /> */}
@@ -36,7 +37,7 @@ export default observer(function AppLayout() {
         <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
               <Switch>
                 
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/home" component={Home} />
                 <PrivateRoute exact path="/researchstudies" component={StudyDashboard} />
                 <PrivateRoute exact path="/assurancerequests" component={AssuranceRequestsDashboard} />
                 <PrivateRoute exact path="/clinical" component={ClinicalDashboard} />

@@ -26,12 +26,12 @@ export default observer(function SideNavBar() {
   }, []);
 
   return (
-    <Sider collapsible collapsed={sideNavbarStore.sider.collapsed} onCollapse={() => handleToggle()}>
+    <Sider collapsedWidth={70} collapsible collapsed={sideNavbarStore.sider.collapsed} onCollapse={() => handleToggle()}>
       <div className="logo"/>
-      <Menu theme='dark' defaultSelectedKeys={['/dashboard']} mode='inline'>
-        <Menu.Item key='/dashboard' icon={<DashboardOutlined />}>
-          <NavLink to='/dashboard'>
-            <span>Dashboard</span>
+      <Menu theme='dark' defaultSelectedKeys={['/home']} mode='inline'>
+        <Menu.Item key='/home' icon={<HomeOutlined />}>
+          <NavLink to='/home'>
+            <span>Home</span>
           </NavLink>
         </Menu.Item>
         <Menu.Item key='/assurancerequests' icon={<EditOutlined />}>

@@ -1,5 +1,5 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import { Button, Space } from 'antd';
 import { ErrorMessage, Formik } from 'formik';
 import { Form, Input, ResetButton, SubmitButton } from 'formik-antd';
 import { observer } from 'mobx-react-lite';
@@ -40,13 +40,17 @@ export default observer(function LoginForm() {
           Forgot password
         </a>
           </Form.Item>
-
+          <Space>
           <Form.Item name='login-or-register'>
           <Button type="primary" htmlType="submit" className="login-form-button">
-              Log in
-        </Button>
+                Login
+            </Button>
+          </Form.Item>
+            <Form.Item name='register'>
              Or <a href="">Register now</a>
           </Form.Item>
+          </Space>
+          
 
           <ErrorMessage
             name='error'
