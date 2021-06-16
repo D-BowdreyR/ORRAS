@@ -2,10 +2,12 @@ using System;
 using System.Text;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,13 +45,14 @@ namespace ORRAS.WebUI
 
             services.AddHealthChecks()
                 .AddDbContextCheck<ApplicationDbContext>();
-            
+
             // setup identity services
             services.AddIdentityCore<AppUser>(opt =>
             {
                 opt.Password.RequireNonAlphanumeric = false;
             })
-            .AddEntityFrameworkStores<ApplicationDbContext>().AddSignInManager<SignInManager<AppUser>>();
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddSignInManager<SignInManager<AppUser>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -80,7 +83,14 @@ namespace ORRAS.WebUI
             
             // configure exception handling
             services.AddControllersWithViews(options =>
-                options.Filters.Add<ApiExceptionFilterAttribute>())
+            {
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            
+                options.Filters.Add<ApiExceptionFilterAttribute>();
+                // quick authorize filter TODO: change to use ApiException and global authorization behavior
+                options.Filters.Add(new AuthorizeFilter(policy));
+            })
+               
                 .AddFluentValidation();
 
            
