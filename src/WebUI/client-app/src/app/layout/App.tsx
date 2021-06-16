@@ -1,9 +1,5 @@
-import { Layout, Space, Spin } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
-import { Container, Header, Icon } from 'semantic-ui-react';
-import Dashboard from '../../features/dashboard/Dashboard';
-import { MenuUnfoldOutlined, MenuFoldOutlined, LoadingOutlined } from '@ant-design/icons';
+import { useEffect } from 'react';
+import { Route } from 'react-router-dom';
 import LandingPage from '../../features/landing/LandingPage';
 import AppLayout from './AppLayout';
 import ModalContainer from '../common/modals/ModalContainer';

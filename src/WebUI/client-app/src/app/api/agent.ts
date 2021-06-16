@@ -1,7 +1,7 @@
 import { message } from 'antd';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { history } from '../..';
-import { User, UserFormValues } from '../models/user';
+import { UserFormValues } from '../models/user';
 import { store } from '../stores/store';
 
 const sleep = (delay: number) => {

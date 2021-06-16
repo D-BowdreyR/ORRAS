@@ -9,7 +9,7 @@ export default observer(function StudyDetails() {
     const { studyStore } = useStore();
     const { loadStudy, studyRegistry, studiesByDate, loadingInitial, selectedStudy: study } = studyStore;
     
-    const { id } = useParams<{ id: string }>();
+  const { id } = useParams<{ id: string }>();
   
     function callback(key: any) {
         console.log(key);
@@ -21,14 +21,17 @@ export default observer(function StudyDetails() {
     
     if (loadingInitial || !study) return <Spin tip='Loading...'/>;
     
-    return (<div>
+  return (
+  <div>
         <PageHeader
         className="study-page-header"
       ghost={false}
       onBack={() => window.history.back()}
       title={(<Space><BookTwoTone style={{fontSize:'21px'}} />Study</Space>)}
             subTitle={study.acronym}
-            tags={<Tag color='orange'>Awaiting Approval</Tag>}
+        tags={<>
+          <Tag color='orange'>Awaiting Approval</Tag> <Tag color='red'>a second tag</Tag>
+        </>}
       extra={[
         <Button key="3">Operation</Button>,
         <Button key="2">Operation</Button>,
@@ -38,12 +41,16 @@ export default observer(function StudyDetails() {
       ]}
     >
       <Descriptions title="Basic Details" size="small" column={3}>
-          <Descriptions.Item label="PID"><a>{study.localPID || "-"}</a></Descriptions.Item>
-        <Descriptions.Item label="Association">
-          <a>421421</a>
+          <Descriptions.Item label="Oxford PID"><a>{study.localPID || "-"}</a></Descriptions.Item>
+        <Descriptions.Item label="est. Start Date">
+          {study.estimatedStartDate}
         </Descriptions.Item>
-          <Descriptions.Item label="Record Created" labelStyle={{ font: 'bold' }}>{study.created}</Descriptions.Item>
-        <Descriptions.Item label="Lead Site">Site Name Here</Descriptions.Item>
+          <Descriptions.Item label="Record Created">{study.created}</Descriptions.Item>
+          <Descriptions.Item label="IRAS PID">{study.irasProjectID}</Descriptions.Item>
+          <Descriptions.Item label="HRA Ref">{study.hraReference}</Descriptions.Item>
+          <Descriptions.Item label="another property">-</Descriptions.Item>
+
+          <Descriptions.Item label="Lead Site">Site Name Here</Descriptions.Item>
         <Descriptions.Item label="Study Type">
                     Study Category Here
         </Descriptions.Item>
@@ -51,10 +58,12 @@ export default observer(function StudyDetails() {
                 <Descriptions.Item label="Long Title" span={3}>
                     {study.longTitle}
         </Descriptions.Item>
+
+          
         </Descriptions>
             </PageHeader>
-        
-        <Tabs defaultActiveKey="1" onChange={callback}>
+    <div style={{paddingTop: '10px'}}>
+        <Tabs defaultActiveKey="1" onChange={callback} type='card'>
             <Tabs.TabPane tab={<span><FileTextOutlined/>More Details</span>} key="1">
                 More Details Goes here
                  <Row gutter={[24,24]}>
@@ -90,6 +99,7 @@ export default observer(function StudyDetails() {
     <Tabs.TabPane  tab={<span><CommentOutlined/>Comments</span>} key="5">
                 Thread of Comments goes here
     </Tabs.TabPane >
-  </Tabs>
+        </Tabs>
+        </div>
     </div>)
 })
