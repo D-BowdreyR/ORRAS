@@ -4,8 +4,30 @@ These pages detail the design of ORRAS in several difference perspectives
 
 ## High Level Design
 
-- System Architecture
-- System Layers and Components
+### Clean Architecture
+
+Developed by Robert C. Martin in 2017, as a synthesis of several other architectures. It promotes the use of dependency inversion to build boundaries between high-level and low-level components. The result is an architecture where all software dependencies point inward to the core business rules, outer details act like "plug-ins" that are easily swappable. This architecture is independent of frameworks, UI and database, and is highly testable.
+
+![Clean Architecture Cone Diagram](../diagrams/Architecture/CleanArchCone.drawio.svg)
+
+
+#### Compared to Traditional Architecture
+
+In traditional tiered architecture all dependencies point to the database and so if the database schema or the database itself changes so must the layers that depend on it. Whereas in Clean Architecture all dependencies point inward towards the business rules that rarely change, all other layers are treated as details or implementations of the functions that the business rule require.
+
+![Traditional Tiered vs Clean Architecture](../diagrams/Architecture/CleanArch_Narch_Comparision.drawio.svg)
+
+### ORRAS System Level Design
+
+The current prototype design is a single page application comprising of a .NET 5 Web API backend and a client frontend design with React.js
+The design follows RESTful API design; using HTTP verbs GET, POST, PUT, PATCH and DELETE to communicate between client to the backend in a stateless way.
+This means client and backend can be developed separately with only the knowledge of how to send and receive http requests and to which API endpoint.
+
+
+![ORRAS Single Page Application Design](../diagrams/Architecture/ProposedSystemPhysicalArch.drawio.svg)
+
+### ORRAS Project Level Design
+
 
 ## Low Level Design
 
