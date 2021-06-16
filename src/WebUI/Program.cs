@@ -36,7 +36,8 @@ namespace ORRAS.WebUI
                         await context.Database.MigrateAsync();
                     }
                     // run the seed data method
-                    await Seed.SeedDataAsync(context, userManager);
+                    await Seed.SeedDefaultUsersAsync(context, userManager);
+                    await Seed.SeedSampleDataAsync(context);
                 }
                 catch (Exception ex)
                 {

@@ -442,3 +442,4 @@ src/WebUI/orra.db-shm
 .gitignore
 src/WebUI/orra.db-wal
 tests/Application.IntegrationTests/appsettings.json
+src/Infrastructure/Persistence/UserAccountSeed.json
