@@ -12,12 +12,15 @@
 
 A software development project to re-design and build a replacement system for the current Oxford Research Radiation Assurance (ORRA) software system used for the coordination and management of clinical governance and technical assurance activities undertaken at the Oxford University Hospital NHS Foundation Trust (OUH NHS FT) for the site approval of clinical research projects that involve ionising radiation research exposures.
 
-The current ORRA software application is built on a Visual Basic 6 and is only compatible with Microsoft Windows clients.
-It runs from a internally hosted network file share and connects to an MS Access Database for data persistence, which is also hosted on the same file share.
+### Current ORRA System
+
+The current ORRA software application is built on a Visual Basic 6 and is only compatible with Microsoft Windows clients. It runs from a internally hosted network file share and connects to an MS Access Database for data persistence, which is also hosted on the same file share.
+
+![Current ORRA System](docs/technicaldocs/diagrams/Architecture/CurrentSystemPhysicalArch.svg)
+
+## Project Technical Stack
 
 This re-design will utilise modern backend and frontend web frameworks and employ software engineering processes to produce a scalable, supportable and extensible product.
-
-## Tools being used
 
 The solution will be built with:
 
@@ -33,12 +36,12 @@ The solution will be built with:
 
 - Docker for containerization of App, Databases, and STS
 
-Concepts/Design Patterns:
+### Concepts/Design Patterns:
 
 - CQRS ( Command Query Responsibility Segregation) Pattern
 - Mediator Pattern
 
-## Git Workflow
+## Project Git Workflow
 
 This is mostly a Solo project, but the structure of this repository will follow some best practices in terms of Git Flow. 
 This repository is divided into three main parts/branches:

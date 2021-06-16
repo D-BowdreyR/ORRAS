@@ -1,0 +1,75 @@
+body {
+  background-color: #eaeaea !important;
+}
+
+.fill-window {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.header {
+  display: inherit;
+}
+
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+  background-image: url(./images/radiation.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position:left, top;
+}
+
+.flex-setting {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+/* landing page style */
+
+.landing-footer{
+    position: fixed;
+    bottom : 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.landing-header{
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+
+}
+
+.landing-image {
+  background-image: url(./images/scanner.jpg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat:no-repeat;
+  background-color: white;
+}
+
+/* end landing page style */
+.trigger {
+  margin-left: 16px;
+  font-size: 20px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.trigger:hover {
+  color: #1890ff;
+}
+
+/* Study Page Style */
+
+.study-page-header {
+  padding: 0;
+  border: 1px solid rgb(235, 237, 240);
+}

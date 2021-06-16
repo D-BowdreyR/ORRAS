@@ -431,3 +431,15 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+sts/MedicalPhysicsIdentity/tempkey.jwk
+
+# ignore appsettings configuration files
+**/appsettings.[Dd]evelopment.json
+**/appsettings.[Ss]taging.json
+**/appsettings.[Pp]roduction.json
+src/WebUI/orra.db
+src/WebUI/orra.db-shm
+.gitignore
+src/WebUI/orra.db-wal
+tests/Application.IntegrationTests/appsettings.json
+src/Infrastructure/Persistence/UserAccountSeed.json
