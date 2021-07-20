@@ -46,7 +46,7 @@ public class TestingUtility
         services.AddLogging();
 
         services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseNpgsql(_configuration.GetConnectionString("PostgreSQL")));
+            options.UseSqlServer(_configuration.GetConnectionString("AzureSQL")));
 
         startup.ConfigureServices(services);
 
@@ -60,7 +60,6 @@ public class TestingUtility
         _checkpoint = new Checkpoint
         {
             TablesToIgnore = new[] { "__EFMigrationsHistory" },
-            DbAdapter = DbAdapter.Postgres
         };
 
         EnsureDatabase();
@@ -77,14 +76,7 @@ public class TestingUtility
 
     public static async Task ResetState()
     {
-        var connection = _configuration.GetConnectionString("PostgreSQL");
-
-        using (var conn = new NpgsqlConnection(connection))
-        {
-            await conn.OpenAsync();
-
-            await _checkpoint.Reset(conn);
-        }
+       await _checkpoint.Reset(_configuration.GetConnectionString("AzureSQL"));
     }
 
     // TODO: Implement a RunAsUserAsync method that will set the current user to a Test user account
